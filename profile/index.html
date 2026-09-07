@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="メルカリで10倍売れるためのプロフィール・アカウントの作り方。第一印象・信頼・購入につなげる書き方を全11ページにまとめました。">
+<meta name="theme-color" content="#F4F8FC">
+<title>10倍売れる メルカリプロフィール作成</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    color-scheme: light;
+    --paper:#F4F8FC; --surface:#FFFFFF; --ink:#1C2733; --head:#123A63; --muted:#5C6B7A;
+    --blue:#1E6FB8; --blue-ink:#155A97; --sky-wash:#E9F3FB;
+    --line:rgba(18,58,99,.16); --line-soft:rgba(18,58,99,.09);
+    --shadow:0 1px 2px rgba(18,58,99,.06), 0 18px 44px rgba(18,58,99,.08);
+    --radius:14px; --measure:33.5rem;
+  }
+  *,*::before,*::after{ box-sizing:border-box; }
+  html{ background:var(--paper); -webkit-text-size-adjust:100%; }
+  body{
+    margin:0; background:var(--paper); color:var(--ink);
+    font-family:"Noto Sans JP","Hiragino Kaku Gothic ProN","Yu Gothic",Meiryo,system-ui,sans-serif;
+    line-height:1.8; letter-spacing:.01em; -webkit-font-smoothing:antialiased;
+  }
+  a{ color:var(--blue-ink); }
+  a:focus-visible,button:focus-visible{ outline:2px solid var(--blue); outline-offset:3px; border-radius:4px; }
+
+  .sheet{ max-width:calc(var(--measure) + 3.4rem); margin:0 auto; background:var(--surface); box-shadow:var(--shadow); }
+  .band{ padding:0 1.7rem; }
+  @media (min-width:600px){ .band{ padding:0 2.6rem; } }
+
+  .topbar{
+    position:sticky; top:0; z-index:20; display:flex; align-items:center; gap:1rem;
+    padding:.75rem 1.7rem; background:rgba(255,255,255,.9); backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line-soft);
+  }
+  @media (min-width:600px){ .topbar{ padding:.75rem 2.6rem; } }
+  .brand{ display:inline-flex; align-items:center; gap:.55rem; font-size:.8rem; font-weight:700; color:var(--head); text-decoration:none; letter-spacing:.04em; }
+  .brand::before{ content:""; width:.5rem; height:.5rem; border-radius:50%; background:var(--blue); box-shadow:0 0 0 .28rem rgba(30,111,184,.16); }
+
+  .hero{ padding:2.6rem 0 1.8rem; }
+  .eyebrow{ font-family:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace; font-size:.7rem; font-weight:600; letter-spacing:.16em; text-transform:uppercase; color:var(--blue); margin:0 0 .9rem; }
+  .hero h1{ margin:0; font-size:1.6rem; line-height:1.5; font-weight:900; color:var(--head); text-wrap:balance; }
+  @media (min-width:600px){ .hero h1{ font-size:1.9rem; } }
+  .hero .sub{ margin:.9rem 0 0; color:var(--muted); font-size:.96rem; }
+  .greet{ margin:1.5rem 0 0; padding:1.1rem 1.15rem; background:var(--sky-wash); border-radius:12px; font-size:.9rem; line-height:1.85; }
+  .greet b{ color:var(--head); }
+
+  .hint{ display:flex; gap:.5rem; align-items:center; margin:1.4rem 1.7rem 0; padding:.55rem .8rem; font-size:.76rem; color:var(--muted); background:var(--sky-wash); border-radius:9px; }
+  @media (min-width:600px){ .hint{ margin-left:2.6rem; margin-right:2.6rem; } }
+  .hint::before{ content:"TIP"; flex:none; font-family:"IBM Plex Mono",monospace; font-size:.6rem; font-weight:600; letter-spacing:.1em; color:var(--blue-ink); }
+
+  .slides{ padding:1.4rem 1.1rem 0; display:flex; flex-direction:column; gap:.9rem; }
+  @media (min-width:600px){ .slides{ padding:1.6rem 1.7rem 0; } }
+  .slide{ margin:0; border:1px solid var(--line); border-radius:10px; overflow:hidden; box-shadow:var(--shadow); cursor:zoom-in; background:var(--surface); }
+  .slide img{ display:block; width:100%; height:auto; }
+  .slide figcaption{ font-family:"IBM Plex Mono",monospace; font-size:.66rem; color:var(--muted); padding:.4rem .7rem; border-top:1px solid var(--line-soft); }
+
+  /* ライトボックス */
+  .lb{ position:fixed; inset:0; z-index:80; display:none; align-items:center; justify-content:center; padding:1rem; background:rgba(12,26,40,.9); }
+  .lb.open{ display:flex; }
+  .lb img{ max-width:100%; max-height:100%; border-radius:6px; box-shadow:0 20px 60px rgba(0,0,0,.5); }
+  .lb__close{ position:absolute; top:.8rem; right:1rem; font-size:1.4rem; line-height:1; color:#fff; background:none; border:none; cursor:pointer; padding:.4rem; }
+
+  .cta{ margin:2.4rem 1.7rem 0; padding:1.8rem 1.4rem; background:var(--sky-wash); color:var(--ink); border:1px solid var(--line); border-radius:var(--radius); text-align:center; }
+  @media (min-width:600px){ .cta{ margin-left:2.6rem; margin-right:2.6rem; } }
+  .cta h2{ margin:0 0 .5rem; font-size:1.12rem; font-weight:900; color:var(--head); }
+  .cta p{ margin:0 auto; max-width:24rem; font-size:.88rem; color:var(--muted); }
+  .btn{ display:inline-block; margin-top:1.15rem; padding:.85rem 1.9rem; background:var(--blue); color:#fff; font-weight:700; font-size:.92rem; border-radius:999px; text-decoration:none; }
+  .cta .fine{ margin-top:.8rem; font-size:.74rem; color:var(--muted); }
+
+  .foot{ padding:2rem 0 3rem; }
+  .foot .disc{ font-size:.76rem; color:var(--muted); line-height:1.8; }
+  .foot .sig{ margin-top:1.2rem; font-size:.8rem; color:var(--head); font-weight:700; }
+  .foot .back{ display:inline-block; margin-top:1rem; font-size:.8rem; font-family:"IBM Plex Mono",monospace; text-decoration:none; color:var(--blue-ink); }
+</style>
+</head>
+<body>
+<div class="sheet">
+
+  <div class="topbar">
+    <a class="brand" href="../">さめちゃん ｜ 特典ライブラリ</a>
+  </div>
+
+  <header class="hero band">
+    <p class="eyebrow">Bonus / Mercari Profile</p>
+    <h1>10倍売れる メルカリプロフィール作成</h1>
+    <p class="sub">アカウントを「お店」に変える。第一印象・信頼・購入につなげるプロフィールの作り方を、全11ページにまとめました。</p>
+
+    <div class="greet">
+      お疲れ様です、さめちゃんです。この特典を受け取っていただき、ありがとうございます。<br>
+      プロフィールは「読まれないもの」と思われがちですが、買う直前の人はちゃんと見ています。ここが整っているだけで、同じ商品でも売れ方が変わります。<br>
+      1ページずつ、自分のアカウントと見比べながら進めてください。最後にチェックリストも付けています。
+    </div>
+  </header>
+
+  <p class="hint">スライド形式です。画像をタップすると拡大できます。スマホは横向きにすると読みやすいです。</p>
+
+  <div class="slides">
+    <figure class="slide"><img src="slides/01.jpg" alt="10倍売れる メルカリプロフィール作成 — 表紙"><figcaption>01 / 11</figcaption></figure>
+    <figure class="slide"><img src="slides/02.jpg" loading="lazy" alt="この特典で扱う内容"><figcaption>02 / 11</figcaption></figure>
+    <figure class="slide"><img src="slides/03.jpg" loading="lazy" alt="なぜプロフィールが大事？ 作り込む3つのメリット"><figcaption>03 / 11</figcaption></figure>
+    <figure class="slide"><img src="slides/04.jpg" loading="lazy" alt="プロフィール画像（アイコン）の作り方"><figcaption>04 / 11</figcaption></figure>
+    <figure class="slide"><img src="slides/05.jpg" loading="lazy" alt="アカウント名の付け方"><figcaption>05 / 11</figcaption></figure>
+    <figure class="slide"><img src="slides/06.jpg" loading="lazy" alt="自己紹介文の構成"><figcaption>06 / 11</figcaption></figure>
+    <figure class="slide"><img src="slides/07.jpg" loading="lazy" alt="自己紹介文を書くときの注意点"><figcaption>07 / 11</figcaption></figure>
+    <figure class="slide"><img src="slides/08.jpg" loading="lazy" alt="そのまま使える自己紹介文テンプレート"><figcaption>08 / 11</figcaption></figure>
+    <figure class="slide"><img src="slides/09.jpg" loading="lazy" alt="マイルール・注意書きの考え方"><figcaption>09 / 11</figcaption></figure>
+    <figure class="slide"><img src="slides/10.jpg" loading="lazy" alt="プロフィール完成前のチェック 8項目"><figcaption>10 / 11</figcaption></figure>
+    <figure class="slide"><img src="slides/11.jpg" loading="lazy" alt="まとめ・次の一歩"><figcaption>11 / 11</figcaption></figure>
+  </div>
+
+  <div class="cta band">
+    <h2>「お店づくり」を最後まで整えたい方へ</h2>
+    <p>プロフィールの先の、出品の型・リピーターの作り方・仕入れの仕組み化を、コミュニティ「セレクト」で扱っています。気になる方は公式LINEからご案内します。</p>
+    <a class="btn" href="https://lin.ee/9u4Rf9dD">公式LINEを見る</a>
+    <p class="fine">※ 登録は無料です。合わないと感じたらいつでもブロックで解除できます。</p>
+  </div>
+
+  <footer class="foot band">
+    <p class="disc">
+      【免責】本資料は、一般に公開されている情報や運用経験をもとにさめちゃんが独自にまとめた学習用資料です。メルカリの規約・仕様は変更されることがあり、内容の正確性・最新性を保証するものではありません。実際の運用は最新のメルカリガイドをご確認ください。本資料の利用によって生じたいかなる損害についても責任を負いかねます。無断転載・再配布はご遠慮ください。
+    </p>
+    <p class="sig">さめちゃん ／ 起業と物販のはなし</p>
+    <a class="back" href="../">← 特典ライブラリに戻る</a>
+  </footer>
+
+</div>
+
+<div class="lb" id="lb" aria-hidden="true">
+  <button class="lb__close" type="button" aria-label="閉じる">&times;</button>
+  <img id="lbimg" src="" alt="">
+</div>
+
+<script>
+  (function(){
+    var lb = document.getElementById("lb");
+    var lbimg = document.getElementById("lbimg");
+    function open(src, alt){ lbimg.src = src; lbimg.alt = alt || ""; lb.classList.add("open"); lb.setAttribute("aria-hidden","false"); }
+    function close(){ lb.classList.remove("open"); lb.setAttribute("aria-hidden","true"); lbimg.src = ""; }
+    document.querySelectorAll(".slide img").forEach(function(img){
+      img.addEventListener("click", function(){ open(img.currentSrc || img.src, img.alt); });
+    });
+    lb.addEventListener("click", close);
+    document.addEventListener("keydown", function(e){ if(e.key === "Escape") close(); });
+  })();
+</script>
+</body>
+</html>
