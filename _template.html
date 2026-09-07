@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<!-- ===========================================================================
+     さめちゃん｜特典ページ  マスターテンプレート  v2   (2026-09)
+     ---------------------------------------------------------------------------
+     使い方
+       1. このファイルを丸ごとコピーして  特典スラッグ/index.html  として保存
+          例)  再出品のコツ →  saishukka/index.html
+       2. <title> / <meta description> / ヒーロー / 各セクションの中身を差し替える
+       3. 使わないコンポーネントのブロックは丸ごと削除してOK（全部入りの見本です）
+       4. 一番下の CTA の LINE リンク（lin.ee/xxxx）を自分のURLに変える
+       5. GitHub にアップ → 数分で  https://ユーザー名.github.io/特典スラッグ/  で公開
+       6. ルートの index.html（特典ライブラリ）の BONUSES 配列に1件足す
+
+     デザイン v2：背景は白、本文は暗い墨、差し色は 青 / 水色。ダークモードなし。
+     色を変えるときは下の :root{ } だけ直せば全体に効く。
+
+     コンポーネント一覧（class名）
+       .hero / .greet ....... 冒頭。あいさつは「お疲れ様です、さめちゃんです。」始まり
+       .toc ................. 章もくじ（順番に意味がある時だけ）
+       section.sec ......... 本文セクション。.sec__code は章コード（任意）
+       ol.steps ............ 順序に意味がある手順
+       ul.check ............ チェックリスト（□）
+       .grid ............... 横並びカード（区分・書類など並列の項目）
+       .note / .note--warn . 補足（水色）/ 注意（アンバー）
+       .script ............. 電話・DMのトーク例
+       table .............. 比較・一覧
+       .fee ............... 金額の強調
+       .cta .............. 最後の導線（公式LINE / セレクト）
+     =========================================================================== -->
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- ▼ 差し替え：この特典が「誰の・どんな悩みを・どうする」ものか1〜2文で -->
+<meta name="description" content="（この特典の説明）">
+<!-- ▼ 検索結果に出したくない場合はこの行を残す。出してよいなら削除 -->
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#F4F8FC">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<!-- ▼ 差し替え：特典タイトル（短い商品名として。「〜のまとめ」等の説明語は付けない） -->
+<title>特典タイトル</title>
+<style>
+  /* ============================================================
+     さめちゃん｜特典ページ 共通スタイル (v2 / ライトのみ)
+     ※この :root 以外は基本さわらない。色はここだけで調整
+     ============================================================ */
+  :root{
+    color-scheme: light;
+    --paper:#F4F8FC;      /* 外側の淡い白 */
+    --surface:#FFFFFF;    /* 紙 */
+    --ink:#1C2733;        /* 本文（暗い） */
+    --head:#123A63;       /* 見出し（暗い青） */
+    --muted:#5C6B7A;
+    --blue:#1E6FB8;       /* 差し色・青 */
+    --blue-ink:#155A97;
+    --sky-wash:#E9F3FB;   /* 水色の面 */
+    --amber:#A96A15;      /* 注意（意味色） */
+    --amber-wash:#FBF1E1;
+    --line:rgba(18,58,99,.16);
+    --line-soft:rgba(18,58,99,.09);
+    --shadow:0 1px 2px rgba(18,58,99,.06), 0 18px 44px rgba(18,58,99,.08);
+    --radius:14px;
+    --measure:33.5rem;
+  }
+  *,*::before,*::after{ box-sizing:border-box; }
+  html{ background:var(--paper); -webkit-text-size-adjust:100%; }
+  body{
+    margin:0; background:var(--paper); color:var(--ink);
+    font-family:"Noto Sans JP","Hiragino Kaku Gothic ProN","Yu Gothic",Meiryo,system-ui,sans-serif;
+    line-height:1.8; letter-spacing:.01em; -webkit-font-smoothing:antialiased;
+  }
+  a{ color:var(--blue-ink); }
+  a:focus-visible{ outline:2px solid var(--blue); outline-offset:3px; border-radius:4px; }
+  .sheet{ max-width:calc(var(--measure) + 3.4rem); margin:0 auto; background:var(--surface); box-shadow:var(--shadow); }
+  .band{ padding:0 1.7rem; }
+  @media (min-width:600px){ .band{ padding:0 2.6rem; } }
+  .topbar{
+    position:sticky; top:0; z-index:20; display:flex; align-items:center; gap:1rem;
+    padding:.75rem 1.7rem; background:rgba(255,255,255,.9); backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line-soft);
+  }
+  @media (min-width:600px){ .topbar{ padding:.75rem 2.6rem; } }
+  .brand{ display:inline-flex; align-items:center; gap:.55rem; font-size:.8rem; font-weight:700; color:var(--head); text-decoration:none; letter-spacing:.04em; }
+  .brand::before{ content:""; width:.5rem; height:.5rem; border-radius:50%; background:var(--blue); box-shadow:0 0 0 .28rem rgba(30,111,184,.16); }
+  .hero{ padding:2.6rem 0 2rem; border-bottom:1px solid var(--line-soft); }
+  .eyebrow{ font-family:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace; font-size:.7rem; font-weight:600; letter-spacing:.16em; text-transform:uppercase; color:var(--blue); margin:0 0 .9rem; }
+  .hero h1{ margin:0; font-size:1.72rem; line-height:1.5; font-weight:900; color:var(--head); text-wrap:balance; }
+  @media (min-width:600px){ .hero h1{ font-size:2rem; } }
+  .hero .sub{ margin:.9rem 0 0; color:var(--muted); font-size:.96rem; }
+  .greet{ margin:1.6rem 0 0; padding:1.1rem 1.15rem; background:var(--sky-wash); border-radius:12px; font-size:.9rem; line-height:1.85; }
+  .greet b{ color:var(--head); }
+  .toc{ list-style:none; margin:1.7rem 0 .4rem; padding:0; display:flex; flex-direction:column; gap:.5rem; counter-reset:toc; }
+  .toc li{ counter-increment:toc; position:relative; padding:.7rem .9rem .7rem 3rem; border:1px solid var(--line); border-radius:11px; background:var(--surface); font-size:.9rem; font-weight:700; color:var(--ink); }
+  .toc li::before{ content:counter(toc); position:absolute; left:0; top:0; bottom:0; width:2.2rem; display:flex; align-items:center; justify-content:center; font-family:"IBM Plex Mono",monospace; font-weight:600; font-size:.9rem; color:var(--blue); border-right:1px solid var(--line-soft); }
+  .toc li span{ display:block; font-weight:400; font-size:.78rem; color:var(--muted); margin-top:.1rem; }
+  section.sec{ padding:2.2rem 0; border-bottom:1px solid var(--line-soft); }
+  .sec__code{ font-family:"IBM Plex Mono",monospace; font-size:.68rem; font-weight:600; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); margin:0 0 .5rem; }
+  .sec h2{ margin:0 0 .3rem; font-size:1.24rem; font-weight:900; color:var(--head); line-height:1.55; text-wrap:balance; }
+  .sec h3{ margin:1.6rem 0 .5rem; font-size:1rem; font-weight:700; color:var(--ink); }
+  .sec p{ margin:.6rem 0; }
+  .sec p.lead{ color:var(--muted); font-size:.95rem; }
+  .step-tag{ display:inline-block; font-family:"IBM Plex Mono",monospace; font-size:.7rem; font-weight:600; letter-spacing:.1em; color:var(--blue-ink); background:var(--sky-wash); padding:.2rem .55rem; border-radius:6px; margin-bottom:.4rem; }
+  .check{ list-style:none; padding:0; margin:1rem 0; display:flex; flex-direction:column; gap:.55rem; }
+  .check li{ position:relative; padding-left:1.85rem; line-height:1.7; font-size:.92rem; }
+  .check li::before{ content:""; position:absolute; left:0; top:.32rem; width:1.1rem; height:1.1rem; border:1.5px solid var(--blue); background:var(--sky-wash); border-radius:5px; }
+  .check--label{ font-family:"IBM Plex Mono",monospace; font-size:.68rem; letter-spacing:.13em; text-transform:uppercase; color:var(--muted); margin:1.2rem 0 .2rem; }
+  ol.steps{ margin:1rem 0; padding:0; list-style:none; counter-reset:st; display:flex; flex-direction:column; gap:.6rem; }
+  ol.steps li{ counter-increment:st; position:relative; padding:.8rem .95rem .8rem 3.1rem; border:1px solid var(--line); border-radius:11px; background:var(--surface); font-size:.92rem; }
+  ol.steps li::before{ content:counter(st,decimal-leading-zero); position:absolute; left:.95rem; top:.8rem; font-family:"IBM Plex Mono",monospace; font-weight:600; color:var(--blue); font-size:.9rem; }
+  ol.steps li b{ color:var(--head); }
+  .grid{ display:grid; grid-template-columns:repeat(auto-fill,minmax(min(100%,13rem),1fr)); gap:.65rem; margin:1.1rem 0; }
+  .grid > div{ border:1px solid var(--line); border-radius:10px; padding:.75rem .85rem; background:var(--surface); }
+  .grid h4{ margin:0 0 .2rem; font-size:.9rem; font-weight:700; color:var(--head); }
+  .grid p{ margin:0; font-size:.8rem; color:var(--muted); line-height:1.65; }
+  .grid .k{ font-family:"IBM Plex Mono",monospace; font-size:.72rem; color:var(--blue); font-weight:600; }
+  .note{ margin:1.2rem 0; padding:.9rem 1.05rem; background:var(--sky-wash); border-left:3px solid var(--blue); border-radius:0 10px 10px 0; font-size:.88rem; line-height:1.75; }
+  .note--warn{ background:var(--amber-wash); border-left-color:var(--amber); }
+  .note__tag{ display:block; font-family:"IBM Plex Mono",monospace; font-size:.66rem; font-weight:600; letter-spacing:.14em; text-transform:uppercase; color:var(--blue-ink); margin-bottom:.25rem; }
+  .note--warn .note__tag{ color:var(--amber); }
+  .script{ margin:1rem 0; padding:1rem 1.1rem; border:1px dashed var(--line); border-radius:10px; background:var(--surface); font-size:.88rem; line-height:1.9; color:var(--ink); }
+  .script::before{ content:"トーク例"; display:block; font-family:"IBM Plex Mono",monospace; font-size:.66rem; letter-spacing:.13em; text-transform:uppercase; color:var(--muted); margin-bottom:.4rem; }
+  .tablewrap{ overflow-x:auto; margin:1.1rem 0; }
+  table{ border-collapse:collapse; width:100%; font-size:.85rem; min-width:22rem; }
+  th,td{ text-align:left; padding:.55rem .7rem; border-bottom:1px solid var(--line); vertical-align:top; }
+  th{ font-weight:700; color:var(--head); font-size:.78rem; letter-spacing:.03em; }
+  td.p{ font-family:"IBM Plex Mono",monospace; white-space:nowrap; color:var(--muted); }
+  .fee{ display:flex; align-items:baseline; gap:.6rem; margin:1.1rem 0 .3rem; }
+  .fee__num{ font-family:"IBM Plex Mono",monospace; font-size:2rem; font-weight:600; color:var(--head); }
+  .fee__cap{ font-size:.82rem; color:var(--muted); }
+  .cta{ margin:2.6rem 1.7rem 0; padding:1.8rem 1.4rem; background:var(--sky-wash); color:var(--ink); border:1px solid var(--line); border-radius:var(--radius); text-align:center; }
+  @media (min-width:600px){ .cta{ margin-left:2.6rem; margin-right:2.6rem; } }
+  .cta h2{ margin:0 0 .5rem; font-size:1.12rem; font-weight:900; color:var(--head); }
+  .cta p{ margin:0 auto; max-width:24rem; font-size:.88rem; color:var(--muted); }
+  .btn{ display:inline-block; margin-top:1.15rem; padding:.85rem 1.9rem; background:var(--blue); color:#fff; font-weight:700; font-size:.92rem; border-radius:999px; text-decoration:none; }
+  .cta .fine{ margin-top:.8rem; font-size:.74rem; color:var(--muted); }
+  .foot{ padding:2rem 0 3rem; }
+  .foot .disc{ font-size:.76rem; color:var(--muted); line-height:1.8; }
+  .foot .sig{ margin-top:1.2rem; font-size:.8rem; color:var(--head); font-weight:700; }
+  .foot .back{ display:inline-block; margin-top:1rem; font-size:.8rem; font-family:"IBM Plex Mono",monospace; text-decoration:none; color:var(--blue-ink); }
+  @media (prefers-reduced-motion:no-preference){ html{ scroll-behavior:smooth; } }
+</style>
+</head>
+<body>
+<div class="sheet">
+
+  <div class="topbar">
+    <a class="brand" href="../">さめちゃん ｜ 特典ライブラリ</a>
+  </div>
+
+  <!-- ============ ヒーロー（差し替え） ============ -->
+  <header class="hero band">
+    <p class="eyebrow">Bonus / カテゴリ名</p>
+    <h1>特典タイトル（読んだ人が「自分ごと」と思える言葉で）</h1>
+    <p class="sub">この特典で何ができるようになるか。1〜2文、やわらかく。</p>
+
+    <!-- あいさつ：さめちゃんの口調で。「お疲れ様です、さめちゃんです。」で始める -->
+    <div class="greet">
+      お疲れ様です、さめちゃんです。この特典を受け取っていただき、ありがとうございます。<br>
+      （なぜこの特典を作ったか／自分の経験と結びつけて2〜3文。綺麗事にしない）<br>
+      （読み方・使い方のひとこと。「ブックマークして見返してください」など）
+    </div>
+
+    <!-- 章もくじ：順番に意味がある特典だけ。無ければ削除 -->
+    <ol class="toc">
+      <li>章タイトル<span>この章で触れること</span></li>
+      <li>章タイトル<span>この章で触れること</span></li>
+      <li>章タイトル<span>この章で触れること</span></li>
+    </ol>
+  </header>
+
+  <!-- ============ 本文セクション（コピーして増やす） ============ -->
+  <section class="sec band">
+    <p class="sec__code">Section 01</p>          <!-- 章コード：任意。不要なら削除 -->
+    <span class="step-tag">STEP 01</span>        <!-- ステップ表記：任意 -->
+    <h2>セクションの見出し</h2>
+    <p class="lead">このセクションで伝えたいことの要約。</p>
+    <p>本文。段落はこの &lt;p&gt; で。</p>
+
+    <!-- 手順（順序に意味がある時） -->
+    <ol class="steps">
+      <li><b>やること</b>：補足の説明</li>
+      <li><b>やること</b>：補足の説明</li>
+    </ol>
+
+    <!-- チェックリスト -->
+    <p class="check--label">確認する項目</p>
+    <ul class="check">
+      <li>チェック項目</li>
+      <li>チェック項目</li>
+    </ul>
+
+    <!-- 補足 / 注意 -->
+    <div class="note">
+      <span class="note__tag">Note</span>
+      補足したいこと。
+    </div>
+    <div class="note note--warn">
+      <span class="note__tag">Caution</span>
+      特に注意してほしいこと。
+    </div>
+  </section>
+
+  <section class="sec band">
+    <p class="sec__code">Section 02</p>
+    <h2>並列の項目はカードで</h2>
+    <div class="grid">
+      <div><p class="k">01</p><h4>項目名</h4><p>短い説明</p></div>
+      <div><p class="k">02</p><h4>項目名</h4><p>短い説明</p></div>
+      <div><p class="k">03</p><h4>項目名</h4><p>短い説明</p></div>
+    </div>
+
+    <!-- トーク例（DM・電話・返信など） -->
+    <div class="script">
+      そのまま使える文章の例をここに。
+    </div>
+
+    <!-- 比較・一覧 -->
+    <div class="tablewrap">
+      <table>
+        <tr><th>項目</th><th>内容</th></tr>
+        <tr><td class="p">A</td><td>説明</td></tr>
+        <tr><td class="p">B</td><td>説明</td></tr>
+      </table>
+    </div>
+
+    <!-- 金額の強調 -->
+    <div class="fee">
+      <span class="fee__num">¥0,000</span>
+      <span class="fee__cap">この金額が何か</span>
+    </div>
+  </section>
+
+  <!-- ============ CTA（LINEリンクを差し替え） ============ -->
+  <div class="cta band">
+    <h2>次の一歩の見出し</h2>
+    <p>公式LINEやセレクトへの誘導文。押し売りにしない。</p>
+    <a class="btn" href="https://lin.ee/xxxxxxxx">公式LINEを見る</a>
+    <p class="fine">※ 登録は無料です。</p>
+  </div>
+
+  <!-- ============ フッター ============ -->
+  <footer class="foot band">
+    <p class="disc">
+      【免責】本資料は一般公開情報をもとにさめちゃんが独自にまとめた学習用資料です。内容の正確性・最新性を保証するものではなく、実際の判断は公的機関等の一次情報をご確認ください。本資料の利用により生じた損害について責任を負いかねます。無断転載・再配布はご遠慮ください。
+    </p>
+    <p class="sig">さめちゃん ／ 起業と物販のはなし</p>
+    <a class="back" href="../">← 特典ライブラリに戻る</a>
+  </footer>
+
+</div>
+</body>
+</html>
