@@ -29,7 +29,7 @@ Googleドライブ配布をやめて、特典を「URLで渡す・いつでも�
 2. `<title>` / `<meta name="description">` / ヒーロー / 各セクションの中身を差し替える
    - あいさつは必ずさめちゃんの口調で（「お疲れ様です、さめちゃんです。」始まり）
    - 使わないコンポーネントのブロックは丸ごと削除してOK
-3. 一番下の CTA の `https://lin.ee/xxxxxxxx` を実際の公式LINE URLに変える
+3. 一番下の CTA のリンクを確認（既定で公式LINE `https://lin.ee/9u4Rf9dD` が入っています。変わったらここを差し替え）
 4. `index.html`（ライブラリ）の `BONUSES` 配列に1件足す：
    ```js
    { no:"02", category:"カテゴリ名", title:"特典タイトル",
