@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="メルカリでよくある5つのクレームと、そのままコピペで使える返信テンプレートをまとめた対応集です。">
+<meta name="theme-color" content="#F4F8FC">
+<title>メルカリ5大クレーム 対応集</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  /* ============================================================
+     さめちゃん｜特典ページ  共通スタイル (v2 / ライトのみ)
+     背景: 白      本文: 暗い墨      差し色: 青 / 水色
+     本文フォント: Noto Sans JP    章コード・数字: IBM Plex Mono
+     ============================================================ */
+  :root{
+    color-scheme: light;
+    --paper:#F4F8FC;
+    --surface:#FFFFFF;
+    --ink:#1C2733;
+    --head:#123A63;
+    --muted:#5C6B7A;
+    --blue:#1E6FB8;
+    --blue-ink:#155A97;
+    --sky-wash:#E9F3FB;
+    --amber:#A96A15;
+    --amber-wash:#FBF1E1;
+    --line:rgba(18,58,99,.16);
+    --line-soft:rgba(18,58,99,.09);
+    --shadow:0 1px 2px rgba(18,58,99,.06), 0 18px 44px rgba(18,58,99,.08);
+    --radius:14px;
+    --measure:33.5rem;
+  }
+
+  *,*::before,*::after{ box-sizing:border-box; }
+  html{ background:var(--paper); -webkit-text-size-adjust:100%; }
+  body{
+    margin:0; background:var(--paper); color:var(--ink);
+    font-family:"Noto Sans JP","Hiragino Kaku Gothic ProN","Yu Gothic",Meiryo,system-ui,sans-serif;
+    font-weight:400; line-height:1.8; letter-spacing:.01em; -webkit-font-smoothing:antialiased;
+  }
+  a{ color:var(--blue-ink); }
+  a:focus-visible,button:focus-visible{ outline:2px solid var(--blue); outline-offset:3px; border-radius:4px; }
+
+  .sheet{ max-width:calc(var(--measure) + 3.4rem); margin:0 auto; background:var(--surface); box-shadow:var(--shadow); }
+  .band{ padding:0 1.7rem; }
+  @media (min-width:600px){ .band{ padding:0 2.6rem; } }
+
+  .topbar{
+    position:sticky; top:0; z-index:20; display:flex; align-items:center; gap:1rem;
+    padding:.75rem 1.7rem; background:rgba(255,255,255,.9); backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line-soft);
+  }
+  @media (min-width:600px){ .topbar{ padding:.75rem 2.6rem; } }
+  .brand{ display:inline-flex; align-items:center; gap:.55rem; font-size:.8rem; font-weight:700; color:var(--head); text-decoration:none; letter-spacing:.04em; }
+  .brand::before{ content:""; width:.5rem; height:.5rem; border-radius:50%; background:var(--blue); box-shadow:0 0 0 .28rem rgba(30,111,184,.16); }
+
+  .hero{ padding:2.6rem 0 2rem; border-bottom:1px solid var(--line-soft); }
+  .eyebrow{ font-family:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace; font-size:.7rem; font-weight:600; letter-spacing:.16em; text-transform:uppercase; color:var(--blue); margin:0 0 .9rem; }
+  .hero h1{ margin:0; font-size:1.72rem; line-height:1.5; font-weight:900; color:var(--head); text-wrap:balance; letter-spacing:.005em; }
+  @media (min-width:600px){ .hero h1{ font-size:2rem; } }
+  .hero .sub{ margin:.9rem 0 0; color:var(--muted); font-size:.96rem; }
+  .greet{ margin:1.6rem 0 0; padding:1.1rem 1.15rem; background:var(--sky-wash); border-radius:12px; font-size:.9rem; line-height:1.85; }
+  .greet b{ color:var(--head); }
+
+  .toc{ list-style:none; margin:1.7rem 0 .4rem; padding:0; display:flex; flex-direction:column; gap:.5rem; counter-reset:toc; }
+  .toc li{ counter-increment:toc; position:relative; padding:.7rem .9rem .7rem 3rem; border:1px solid var(--line); border-radius:11px; background:var(--surface); font-size:.9rem; font-weight:700; color:var(--ink); }
+  .toc li::before{ content:counter(toc); position:absolute; left:0; top:0; bottom:0; width:2.2rem; display:flex; align-items:center; justify-content:center; font-family:"IBM Plex Mono",monospace; font-weight:600; font-size:.9rem; color:var(--blue); border-right:1px solid var(--line-soft); }
+  .toc li span{ display:block; font-weight:400; font-size:.78rem; color:var(--muted); margin-top:.1rem; }
+
+  section.sec{ padding:2.2rem 0; border-bottom:1px solid var(--line-soft); }
+  .sec__code{ font-family:"IBM Plex Mono",monospace; font-size:.68rem; font-weight:600; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); margin:0 0 .5rem; }
+  .sec h2{ margin:0 0 .3rem; font-size:1.24rem; font-weight:900; color:var(--head); line-height:1.55; text-wrap:balance; }
+  .sec h3{ margin:1.6rem 0 .5rem; font-size:1rem; font-weight:700; color:var(--ink); }
+  .sec p{ margin:.6rem 0; }
+  .sec p.lead{ color:var(--muted); font-size:.95rem; }
+
+  /* 番号バッジ（5大クレーム） */
+  .claimno{ display:inline-flex; align-items:center; justify-content:center; width:1.7rem; height:1.7rem; border-radius:8px; background:var(--blue); color:#fff; font-family:"IBM Plex Mono",monospace; font-weight:600; font-size:.9rem; margin-bottom:.5rem; }
+
+  /* 購入者の声（ふきだし） */
+  .voice{ display:flex; gap:.55rem; align-items:flex-start; margin:1rem 0 1.1rem; }
+  .voice::before{ content:"購入者"; flex:none; margin-top:.15rem; font-family:"IBM Plex Mono",monospace; font-size:.6rem; letter-spacing:.06em; color:var(--muted); border:1px solid var(--line); border-radius:6px; padding:.15rem .4rem; }
+  .voice p{ margin:0; background:var(--surface); border:1px solid var(--line); border-radius:4px 13px 13px 13px; padding:.65rem .95rem; font-size:.95rem; font-weight:700; color:var(--ink); }
+
+  /* 返信テンプレ（コピー付き） */
+  .tmpl{ margin:1rem 0; border:1px solid var(--line); border-radius:12px; overflow:hidden; background:var(--surface); }
+  .tmpl__bar{ display:flex; align-items:center; justify-content:space-between; gap:.5rem; padding:.5rem .55rem .5rem .85rem; background:var(--sky-wash); border-bottom:1px solid var(--line); }
+  .tmpl__label{ font-family:"IBM Plex Mono",monospace; font-size:.66rem; font-weight:600; letter-spacing:.1em; text-transform:uppercase; color:var(--blue-ink); }
+  .tmpl__copy{ font:inherit; font-size:.72rem; font-weight:700; cursor:pointer; border:1px solid var(--blue); background:#fff; color:var(--blue-ink); border-radius:999px; padding:.28rem .85rem; white-space:nowrap; }
+  .tmpl__copy[data-done="1"]{ background:var(--blue); color:#fff; }
+  .tmpl__body{ padding:.9rem 1rem; font-size:.9rem; line-height:1.95; white-space:pre-wrap; color:var(--ink); }
+
+  .note{ margin:1.2rem 0; padding:.9rem 1.05rem; background:var(--sky-wash); border-left:3px solid var(--blue); border-radius:0 10px 10px 0; font-size:.88rem; line-height:1.75; }
+  .note--warn{ background:var(--amber-wash); border-left-color:var(--amber); }
+  .note__tag{ display:block; font-family:"IBM Plex Mono",monospace; font-size:.66rem; font-weight:600; letter-spacing:.14em; text-transform:uppercase; color:var(--blue-ink); margin-bottom:.25rem; }
+  .note--warn .note__tag{ color:var(--amber); }
+
+  .check{ list-style:none; padding:0; margin:1rem 0; display:flex; flex-direction:column; gap:.55rem; }
+  .check li{ position:relative; padding-left:1.85rem; line-height:1.7; font-size:.92rem; }
+  .check li::before{ content:""; position:absolute; left:0; top:.32rem; width:1.1rem; height:1.1rem; border:1.5px solid var(--blue); background:var(--sky-wash); border-radius:5px; }
+
+  .cta{ margin:2.6rem 1.7rem 0; padding:1.8rem 1.4rem; background:var(--sky-wash); color:var(--ink); border:1px solid var(--line); border-radius:var(--radius); text-align:center; }
+  @media (min-width:600px){ .cta{ margin-left:2.6rem; margin-right:2.6rem; } }
+  .cta h2{ margin:0 0 .5rem; font-size:1.12rem; font-weight:900; color:var(--head); }
+  .cta p{ margin:0 auto; max-width:24rem; font-size:.88rem; color:var(--muted); }
+  .btn{ display:inline-block; margin-top:1.15rem; padding:.85rem 1.9rem; background:var(--blue); color:#fff; font-weight:700; font-size:.92rem; border-radius:999px; text-decoration:none; }
+  .cta .fine{ margin-top:.8rem; font-size:.74rem; color:var(--muted); }
+
+  .foot{ padding:2rem 0 3rem; }
+  .foot .disc{ font-size:.76rem; color:var(--muted); line-height:1.8; }
+  .foot .sig{ margin-top:1.2rem; font-size:.8rem; color:var(--head); font-weight:700; }
+  .foot .back{ display:inline-block; margin-top:1rem; font-size:.8rem; font-family:"IBM Plex Mono",monospace; text-decoration:none; color:var(--blue-ink); }
+
+  @media (prefers-reduced-motion:no-preference){ html{ scroll-behavior:smooth; } }
+</style>
+</head>
+<body>
+<div class="sheet">
+
+  <div class="topbar">
+    <a class="brand" href="../">さめちゃん ｜ 特典ライブラリ</a>
+  </div>
+
+  <header class="hero band">
+    <p class="eyebrow">Bonus / Mercari Support</p>
+    <h1>メルカリ5大クレーム 対応集</h1>
+    <p class="sub">よくある5つのクレームと、そのままコピペで使える返信テンプレートをまとめました。</p>
+
+    <div class="greet">
+      お疲れ様です、さめちゃんです。この特典を受け取っていただき、ありがとうございます。<br>
+      クレーム対応でいちばん消耗するのは「なんて返そう…」と考え込む時間です。私も最初はここで止まっていました。<br>
+      文面を先に用意しておけば、感情を持っていかれずに淡々とさばけます。返信欄にコピーして、状況に合わせて少し直して使ってください。<b>謝るところは謝る、線を引くところは引く</b>——この2つだけ意識すれば大丈夫です。
+    </div>
+
+    <ol class="toc">
+      <li>不良品だった<span>まず状況確認 → 謝罪 → 返送 or 破棄</span></li>
+      <li>購入者都合の返品希望<span>対応する / しない で文面を変える</span></li>
+      <li>配送中のトラブル<span>発送時の状況を伝えて事務局へ</span></li>
+      <li>対応が遅い・悪い<span>お詫び＋今後の一言</span></li>
+      <li>値段交渉中の割り込み<span>「購入者優先」で線を引く</span></li>
+    </ol>
+
+    <p class="lead" style="font-size:.8rem;">※ メルカリの規約・仕様は変わることがあります。最終的な対応は必ず最新のメルカリガイド／事務局の案内をご確認ください。</p>
+  </header>
+
+  <!-- ① 不良品 -->
+  <section class="sec band">
+    <p class="sec__code">Claim 01</p>
+    <span class="claimno">1</span>
+    <h2>不良品だった</h2>
+
+    <div class="voice"><p>届いた商品が壊れて（汚れて）いました。</p></div>
+
+    <p>まずは状況を確認して、こちらの不手際があればきちんと謝罪します。<b>取引のキャンセルは、商品が手元に戻ってから</b>。先にキャンセルすると返送されないリスクがあります。</p>
+
+    <div class="tmpl">
+      <div class="tmpl__bar"><span class="tmpl__label">まず状況を確認する</span><button class="tmpl__copy" type="button">コピー</button></div>
+      <div class="tmpl__body">ご連絡いただきありがとうございます。
+ご迷惑をおかけし申し訳ございません。
+お受け取り時の状況と、商品の状態を詳しく教えていただけますか。
+差し支えなければ、写真を添えていただけると助かります。
+確認のうえ、対応をご案内いたします。</div>
+    </div>
+
+    <h3>そのあとの動き</h3>
+    <ul class="check">
+      <li>再販できる状態 → 着払いで返送を依頼する</li>
+      <li>再販が難しい → 購入者に破棄を依頼する</li>
+      <li>取引キャンセルは、商品が到着してから手続きする</li>
+    </ul>
+
+    <div class="note">
+      <span class="note__tag">Point</span>
+      写真と商品説明欄に「ありのまま」を詳しく残しておくのがいちばんの予防策です。傷・使用感は先に書ききっておきましょう。
+    </div>
+  </section>
+
+  <!-- ② 購入者都合の返品 -->
+  <section class="sec band">
+    <p class="sec__code">Claim 02</p>
+    <span class="claimno">2</span>
+    <h2>購入者都合による返品希望</h2>
+
+    <div class="voice"><p>サイズが合わなかったので返品したいのですが…</p></div>
+
+    <p>結論として、<b>購入者都合の返品は対応しなくても問題ありません</b>（メルカリの規約）。応じるかどうかで文面が変わります。まず「対応しない」を基本に、事情次第で「対応する」を選びます。</p>
+
+    <div class="tmpl">
+      <div class="tmpl__bar"><span class="tmpl__label">返品に対応しない場合</span><button class="tmpl__copy" type="button">コピー</button></div>
+      <div class="tmpl__body">ご連絡いただきありがとうございます。
+誠に申し訳ございませんが、メルカリの規約に基づき、購入者さまのご都合による返品には対応いたしかねます。
+サイズ・状態は商品説明に記載しておりますので、ご理解のほどよろしくお願いいたします。</div>
+    </div>
+
+    <div class="tmpl">
+      <div class="tmpl__bar"><span class="tmpl__label">返品に対応する場合</span><button class="tmpl__copy" type="button">コピー</button></div>
+      <div class="tmpl__body">ご連絡いただきありがとうございます。
+今回は購入者さまのご都合による返品となりますので、往復の送料はお客さまのご負担となります。
+ご了承いただけましたら、返品の手続きを進めさせていただきます。商品が届き次第、取引をキャンセルいたします。</div>
+    </div>
+
+    <div class="note">
+      <span class="note__tag">Point</span>
+      トラブル防止のため、写真と説明欄にはありのままを詳しく。「サイズは実寸（◯◯cm）」まで書いておくと、この手の連絡自体が減ります。
+    </div>
+  </section>
+
+  <!-- ③ 配送トラブル -->
+  <section class="sec band">
+    <p class="sec__code">Claim 03</p>
+    <span class="claimno">3</span>
+    <h2>配送中のトラブル</h2>
+
+    <div class="voice"><p>商品が破損して届きました。</p></div>
+
+    <p>発送時の梱包状況を具体的に伝えます。<b>出品者に非がなければ、対応先はメルカリ事務局</b>です。なお、匿名配送（メルカリ便）でないと配送補償を受けられないケースがあります。</p>
+
+    <div class="tmpl">
+      <div class="tmpl__bar"><span class="tmpl__label">発送時の状況を伝える</span><button class="tmpl__copy" type="button">コピー</button></div>
+      <div class="tmpl__body">ご連絡いただきありがとうございます。
+ご迷惑をおかけし申し訳ございません。
+発送時に破損はなく、緩衝材で包み、「割れ物注意」シールを貼って発送しております。
+配送中のトラブルの可能性がありますので、恐れ入りますが、取引画面からメルカリ事務局へお問い合わせをお願いいたします。
+こちらでも並行して事務局へ連絡いたします。</div>
+    </div>
+
+    <div class="note note--warn">
+      <span class="note__tag">Caution</span>
+      梱包は毎回しっかりと。割れ物は緩衝材で二重、隙間を埋める。発送前の写真を1枚残しておくと、こういう時に強いです。
+    </div>
+  </section>
+
+  <!-- ④ 対応が遅い -->
+  <section class="sec band">
+    <p class="sec__code">Claim 04</p>
+    <span class="claimno">4</span>
+    <h2>対応が遅い・悪い</h2>
+
+    <div class="voice"><p>連絡が遅いです！</p></div>
+
+    <p>言い訳せずに、まず謝ります。そのうえで、遅れていた本題（質問への回答や発送予定）を続けます。</p>
+
+    <div class="tmpl">
+      <div class="tmpl__bar"><span class="tmpl__label">お詫び＋本題</span><button class="tmpl__copy" type="button">コピー</button></div>
+      <div class="tmpl__body">この度はご連絡が遅くなり、大変申し訳ございません。
+（ここに、いただいたご質問への回答／発送予定などを記載）
+今後このようなことがないよう、迅速に対応いたします。
+引き続きどうぞよろしくお願いいたします。</div>
+    </div>
+
+    <div class="note">
+      <span class="note__tag">Point</span>
+      すぐに答えられない時も「確認のうえ本日中にご連絡します」と一言返すだけで印象が変わります。沈黙がいちばん不安にさせます。
+    </div>
+  </section>
+
+  <!-- ⑤ 割り込み -->
+  <section class="sec band">
+    <p class="sec__code">Claim 05</p>
+    <span class="claimno">5</span>
+    <h2>値段交渉中の割り込み購入</h2>
+
+    <div class="voice"><p>値引き交渉中だったのに、横から購入されました！</p></div>
+
+    <p>心情はわかりつつ、<b>ルールは「先に購入した人が優先」</b>。ここで例外を作ると後々もめます。丁寧に、でもはっきり線を引きます。</p>
+
+    <div class="tmpl">
+      <div class="tmpl__bar"><span class="tmpl__label">購入者優先で伝える</span><button class="tmpl__copy" type="button">コピー</button></div>
+      <div class="tmpl__body">この度はご連絡いただきありがとうございます。
+申し訳ございませんが、メルカリの規約上、先にご購入いただいた方を優先させていただいております。
+また同じような商品を出品する際はお知らせいたしますので、よろしければフォローをお願いいたします。
+ご理解のほどよろしくお願いいたします。</div>
+    </div>
+
+    <div class="note">
+      <span class="note__tag">Point</span>
+      プロフィール欄と商品説明欄に「コメント中でも購入者優先です」と書いておくと、この揉め事はほぼ防げます。
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <div class="cta band">
+    <h2>「さばく」から「増やす」へ進みたい方へ</h2>
+    <p>クレームを減らす出品の型、リピーターの作り方、仕入れを仕組みにする流れを、コミュニティ「セレクト」で扱っています。気になる方は公式LINEからご案内します。</p>
+    <a class="btn" href="https://lin.ee/9u4Rf9dD">公式LINEを見る</a>
+    <p class="fine">※ 登録は無料です。合わないと感じたらいつでもブロックで解除できます。</p>
+  </div>
+
+  <footer class="foot band">
+    <p class="disc">
+      【免責】本資料は、一般に公開されている情報や運用経験をもとにさめちゃんが独自にまとめた学習用資料です。メルカリの規約・仕様は変更されることがあり、内容の正確性・最新性を保証するものではありません。実際の対応は必ず最新のメルカリガイドおよび事務局の案内に従ってください。本資料の利用によって生じたいかなる損害についても責任を負いかねます。無断転載・再配布はご遠慮ください。
+    </p>
+    <p class="sig">さめちゃん ／ 起業と物販のはなし</p>
+    <a class="back" href="../">← 特典ライブラリに戻る</a>
+  </footer>
+
+</div>
+
+<script>
+  /* 返信テンプレのコピー */
+  document.querySelectorAll(".tmpl").forEach(function(box){
+    var btn = box.querySelector(".tmpl__copy");
+    var body = box.querySelector(".tmpl__body");
+    if(!btn || !body) return;
+    btn.addEventListener("click", function(){
+      var text = body.textContent.trim();
+      var done = function(){
+        btn.textContent = "コピーしました";
+        btn.setAttribute("data-done", "1");
+        setTimeout(function(){ btn.textContent = "コピー"; btn.removeAttribute("data-done"); }, 1600);
+      };
+      if(navigator.clipboard && navigator.clipboard.writeText){
+        navigator.clipboard.writeText(text).then(done).catch(fallback);
+      } else { fallback(); }
+      function fallback(){
+        var ta = document.createElement("textarea");
+        ta.value = text; ta.style.position = "fixed"; ta.style.opacity = "0";
+        document.body.appendChild(ta); ta.select();
+        try{ document.execCommand("copy"); done(); }catch(e){ btn.textContent = "選択してコピー"; }
+        document.body.removeChild(ta);
+      }
+    });
+  });
+</script>
+</body>
+</html>
