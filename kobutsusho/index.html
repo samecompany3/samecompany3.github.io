@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="個人でフリマアプリ販売を始める人へ。自宅を営業所にして、書類集めから申請・許可後の運用までを1本にまとめた古物商許可の取得マニュアルです。">
+<meta name="theme-color" content="#F4F8FC">
+<title>古物商許可 取得マニュアル</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  /* ============================================================
+     さめちゃん｜特典ページ  共通スタイル (v2 / ライトのみ)
+     背景: 白      本文: 暗い墨      差し色: 青 / 水色
+     本文フォント: Noto Sans JP    章コード・数字: IBM Plex Mono
+     ============================================================ */
+  :root{
+    color-scheme: light;
+    --paper:#F4F8FC;       /* 外側の淡い白 */
+    --surface:#FFFFFF;     /* 紙 */
+    --ink:#1C2733;         /* 本文（暗い） */
+    --head:#123A63;        /* 見出し（暗い青） */
+    --muted:#5C6B7A;
+    --blue:#1E6FB8;        /* 差し色・青 */
+    --blue-ink:#155A97;
+    --sky-wash:#E9F3FB;    /* 水色の面 */
+    --amber:#A96A15;       /* 注意（意味色） */
+    --amber-wash:#FBF1E1;
+    --line:rgba(18,58,99,.16);
+    --line-soft:rgba(18,58,99,.09);
+    --shadow:0 1px 2px rgba(18,58,99,.06), 0 18px 44px rgba(18,58,99,.08);
+    --radius:14px;
+    --measure:33.5rem;
+  }
+
+  *,*::before,*::after{ box-sizing:border-box; }
+  html{ background:var(--paper); -webkit-text-size-adjust:100%; }
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:"Noto Sans JP","Hiragino Kaku Gothic ProN","Yu Gothic",Meiryo,system-ui,sans-serif;
+    font-weight:400;
+    line-height:1.8;
+    letter-spacing:.01em;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{ color:var(--blue-ink); }
+  a:focus-visible{ outline:2px solid var(--blue); outline-offset:3px; border-radius:4px; }
+
+  /* --- シート（1枚の紙） --- */
+  .sheet{
+    max-width:calc(var(--measure) + 3.4rem);
+    margin:0 auto;
+    background:var(--surface);
+    box-shadow:var(--shadow);
+  }
+  .band{ padding:0 1.7rem; }
+  @media (min-width:600px){ .band{ padding:0 2.6rem; } }
+
+  /* --- 上部バー --- */
+  .topbar{
+    position:sticky; top:0; z-index:20;
+    display:flex; align-items:center; gap:1rem;
+    padding:.75rem 1.7rem;
+    background:rgba(255,255,255,.9);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line-soft);
+  }
+  @media (min-width:600px){ .topbar{ padding:.75rem 2.6rem; } }
+  .brand{ display:inline-flex; align-items:center; gap:.55rem; font-size:.8rem; font-weight:700; color:var(--head); text-decoration:none; letter-spacing:.04em; }
+  .brand::before{ content:""; width:.5rem; height:.5rem; border-radius:50%; background:var(--blue); box-shadow:0 0 0 .28rem rgba(30,111,184,.16); }
+
+  /* --- ヒーロー --- */
+  .hero{ padding:2.6rem 0 2rem; border-bottom:1px solid var(--line-soft); }
+  .eyebrow{
+    font-family:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+    font-size:.7rem; font-weight:600; letter-spacing:.16em;
+    text-transform:uppercase; color:var(--blue); margin:0 0 .9rem;
+  }
+  .hero h1{
+    margin:0; font-size:1.72rem; line-height:1.5; font-weight:900;
+    color:var(--head); text-wrap:balance; letter-spacing:.005em;
+  }
+  @media (min-width:600px){ .hero h1{ font-size:2rem; } }
+  .hero .sub{ margin:.9rem 0 0; color:var(--muted); font-size:.96rem; }
+  .greet{
+    margin:1.6rem 0 0; padding:1.1rem 1.15rem;
+    background:var(--sky-wash); border-radius:12px;
+    font-size:.9rem; line-height:1.85;
+  }
+  .greet b{ color:var(--head); }
+
+  /* --- 章もくじ --- */
+  .toc{ list-style:none; margin:1.7rem 0 .4rem; padding:0; display:flex; flex-direction:column; gap:.5rem; counter-reset:toc; }
+  .toc li{
+    counter-increment:toc; position:relative;
+    padding:.7rem .9rem .7rem 3rem;
+    border:1px solid var(--line); border-radius:11px; background:var(--surface);
+    font-size:.9rem; font-weight:700; color:var(--ink);
+  }
+  .toc li::before{
+    content:counter(toc); position:absolute; left:0; top:0; bottom:0;
+    width:2.2rem; display:flex; align-items:center; justify-content:center;
+    font-family:"IBM Plex Mono",monospace; font-weight:600; font-size:.9rem;
+    color:var(--blue); border-right:1px solid var(--line-soft);
+  }
+  .toc li span{ display:block; font-weight:400; font-size:.78rem; color:var(--muted); margin-top:.1rem; }
+
+  /* --- セクション --- */
+  section.sec{ padding:2.2rem 0; border-bottom:1px solid var(--line-soft); }
+  .sec__code{
+    font-family:"IBM Plex Mono",monospace; font-size:.68rem; font-weight:600;
+    letter-spacing:.14em; text-transform:uppercase; color:var(--muted); margin:0 0 .5rem;
+  }
+  .sec h2{
+    margin:0 0 .3rem; font-size:1.24rem; font-weight:900; color:var(--head);
+    line-height:1.55; text-wrap:balance;
+  }
+  .sec h3{ margin:1.6rem 0 .5rem; font-size:1rem; font-weight:700; color:var(--ink); }
+  .sec p{ margin:.6rem 0; }
+  .sec p.lead{ color:var(--muted); font-size:.95rem; }
+  .step-tag{
+    display:inline-block; font-family:"IBM Plex Mono",monospace; font-size:.7rem;
+    font-weight:600; letter-spacing:.1em; color:var(--blue-ink);
+    background:var(--sky-wash); padding:.2rem .55rem; border-radius:6px; margin-bottom:.4rem;
+  }
+
+  /* --- チェックリスト --- */
+  .check{ list-style:none; padding:0; margin:1rem 0; display:flex; flex-direction:column; gap:.55rem; }
+  .check li{ position:relative; padding-left:1.85rem; line-height:1.7; font-size:.92rem; }
+  .check li::before{
+    content:""; position:absolute; left:0; top:.32rem;
+    width:1.1rem; height:1.1rem; border:1.5px solid var(--blue);
+    background:var(--sky-wash); border-radius:5px;
+  }
+  .check--label{
+    font-family:"IBM Plex Mono",monospace; font-size:.68rem; letter-spacing:.13em;
+    text-transform:uppercase; color:var(--muted); margin:1.2rem 0 .2rem;
+  }
+
+  /* --- 手順（順序に意味あり） --- */
+  ol.steps{ margin:1rem 0; padding:0; list-style:none; counter-reset:st; display:flex; flex-direction:column; gap:.6rem; }
+  ol.steps li{
+    counter-increment:st; position:relative; padding:.8rem .95rem .8rem 3.1rem;
+    border:1px solid var(--line); border-radius:11px; background:var(--surface); font-size:.92rem;
+  }
+  ol.steps li::before{
+    content:counter(st,decimal-leading-zero); position:absolute; left:.95rem; top:.8rem;
+    font-family:"IBM Plex Mono",monospace; font-weight:600; color:var(--blue); font-size:.9rem;
+  }
+  ol.steps li b{ color:var(--head); }
+
+  /* --- カード群 --- */
+  .grid{ display:grid; grid-template-columns:repeat(auto-fill,minmax(min(100%,13rem),1fr)); gap:.65rem; margin:1.1rem 0; }
+  .grid > div{ border:1px solid var(--line); border-radius:10px; padding:.75rem .85rem; background:var(--surface); }
+  .grid h4{ margin:0 0 .2rem; font-size:.9rem; font-weight:700; color:var(--head); }
+  .grid p{ margin:0; font-size:.8rem; color:var(--muted); line-height:1.65; }
+  .grid .k{ font-family:"IBM Plex Mono",monospace; font-size:.72rem; color:var(--blue); font-weight:600; }
+
+  /* --- コールアウト --- */
+  .note{
+    margin:1.2rem 0; padding:.9rem 1.05rem;
+    background:var(--sky-wash); border-left:3px solid var(--blue);
+    border-radius:0 10px 10px 0; font-size:.88rem; line-height:1.75;
+  }
+  .note--warn{ background:var(--amber-wash); border-left-color:var(--amber); }
+  .note__tag{
+    display:block; font-family:"IBM Plex Mono",monospace; font-size:.66rem;
+    font-weight:600; letter-spacing:.14em; text-transform:uppercase;
+    color:var(--blue-ink); margin-bottom:.25rem;
+  }
+  .note--warn .note__tag{ color:var(--amber); }
+
+  /* --- トーク例 --- */
+  .script{
+    margin:1rem 0; padding:1rem 1.1rem; border:1px dashed var(--line);
+    border-radius:10px; background:var(--surface); font-size:.88rem; line-height:1.9;
+    color:var(--ink);
+  }
+  .script::before{ content:"電話トーク例"; display:block; font-family:"IBM Plex Mono",monospace; font-size:.66rem; letter-spacing:.13em; text-transform:uppercase; color:var(--muted); margin-bottom:.4rem; }
+
+  /* --- テーブル --- */
+  .tablewrap{ overflow-x:auto; margin:1.1rem 0; }
+  table{ border-collapse:collapse; width:100%; font-size:.85rem; min-width:22rem; }
+  th,td{ text-align:left; padding:.55rem .7rem; border-bottom:1px solid var(--line); vertical-align:top; }
+  th{ font-weight:700; color:var(--head); font-size:.78rem; letter-spacing:.03em; }
+  td.p{ font-family:"IBM Plex Mono",monospace; white-space:nowrap; color:var(--muted); }
+
+  /* --- 料金 --- */
+  .fee{ display:flex; align-items:baseline; gap:.6rem; margin:1.1rem 0 .3rem; }
+  .fee__num{ font-family:"IBM Plex Mono",monospace; font-size:2rem; font-weight:600; color:var(--head); letter-spacing:.01em; }
+  .fee__cap{ font-size:.82rem; color:var(--muted); }
+
+  /* --- CTA --- */
+  .cta{
+    margin:2.6rem 1.7rem 0; padding:1.8rem 1.4rem;
+    background:var(--sky-wash); color:var(--ink);
+    border:1px solid var(--line); border-radius:var(--radius); text-align:center;
+  }
+  @media (min-width:600px){ .cta{ margin-left:2.6rem; margin-right:2.6rem; } }
+  .cta h2{ margin:0 0 .5rem; font-size:1.12rem; font-weight:900; color:var(--head); }
+  .cta p{ margin:0 auto; max-width:24rem; font-size:.88rem; color:var(--muted); }
+  .btn{
+    display:inline-block; margin-top:1.15rem; padding:.85rem 1.9rem;
+    background:var(--blue); color:#fff;
+    font-weight:700; font-size:.92rem; border-radius:999px; text-decoration:none;
+  }
+  .cta .fine{ margin-top:.8rem; font-size:.74rem; color:var(--muted); }
+
+  /* --- フッター --- */
+  .foot{ padding:2rem 0 3rem; }
+  .foot .disc{ font-size:.76rem; color:var(--muted); line-height:1.8; }
+  .foot .sig{ margin-top:1.2rem; font-size:.8rem; color:var(--head); font-weight:700; }
+  .foot .back{ display:inline-block; margin-top:1rem; font-size:.8rem; font-family:"IBM Plex Mono",monospace; text-decoration:none; color:var(--blue-ink); }
+
+  @media (prefers-reduced-motion:no-preference){ html{ scroll-behavior:smooth; } }
+</style>
+</head>
+<body>
+<div class="sheet">
+
+  <div class="topbar">
+    <a class="brand" href="../">さめちゃん ｜ 特典ライブラリ</a>
+  </div>
+
+  <header class="hero band">
+    <p class="eyebrow">Guide / Kobutsusho License</p>
+    <h1>古物商許可 取得マニュアル</h1>
+    <p class="sub">個人で・自宅を営業所にして・フリマアプリ中心で販売を続ける人へ。<br>書類集めから申請、許可後の運用までを1本にまとめました。</p>
+
+    <div class="greet">
+      お疲れ様です、さめちゃんです。この特典を受け取っていただき、ありがとうございます。<br>
+      フリマアプリの販売を「その場の不用品処分」から「続けていく事業」に切り替えるとき、どこかで必要になるのが<b>古物商許可</b>です。私自身、在庫処分品の販売から始めて法人化まで進みましたが、ここを先に整理しておくと後の動きが本当に軽くなります。<br>
+      難しい書類の話に見えて、順番どおり進めれば個人でも問題なく取れます。ブックマークして、手を動かしながら見返してください。
+    </div>
+
+    <ol class="toc">
+      <li>準備フェーズ<span>営業所を決める / 管轄警察署を調べる / 事前に電話する</span></li>
+      <li>書類フェーズ<span>住民票 / 身分証明書 / 略歴書 / 誓約書 ほか7種類</span></li>
+      <li>申請フェーズ<span>申請書の記入とセルフチェック / 警察署へ申請 / 審査</span></li>
+      <li>許可後の運用<span>仕入れ記録 / 取引相手の確認 / 帳簿の管理</span></li>
+    </ol>
+
+    <p class="lead" style="font-size:.8rem;">※ 本マニュアルは全国共通の一般情報です。細部は都道府県ごとの運用で異なります。最終的な確認は必ず管轄の警察署へ。</p>
+  </header>
+
+  <!-- ===== 前提 ===== -->
+  <section class="sec band">
+    <p class="sec__code">Scope — このマニュアルの想定</p>
+    <h2>こういう人を想定しています</h2>
+    <p class="lead">日本国内に住む個人が、自宅を営業所として、フリマアプリで「仕入れ → 出品 → 販売 → 再仕入れ」を繰り返すケースです。</p>
+
+    <ol class="steps">
+      <li><b>仕入れる</b>：フリマアプリなどで中古品を買う</li>
+      <li><b>整える</b>：自宅で保管・検品して出品作業をする</li>
+      <li><b>売る</b>：フリマアプリ・オークションサイトなどで販売する</li>
+      <li><b>回す</b>：売上を元手にまた仕入れる</li>
+    </ol>
+
+    <div class="tablewrap">
+      <table>
+        <tr><th>居住地</th><td>日本国内</td></tr>
+        <tr><th>事業者区分</th><td>個人（法人ではない）</td></tr>
+        <tr><th>仕入れ先</th><td>主にフリマアプリ・ネット上の中古品</td></tr>
+        <tr><th>販売先</th><td>フリマアプリ・オークションサイトなど</td></tr>
+        <tr><th>営業所</th><td>自宅を「主たる営業所」として使用</td></tr>
+        <tr><th>管理者</th><td>本人が兼任（単独運営）</td></tr>
+      </table>
+    </div>
+
+    <div class="note">
+      <span class="note__tag">Note</span>
+      自分の不用品を処分するだけで、継続的な仕入れ販売をしないなら、許可が不要な場合があります。迷ったら申請前に管轄警察署へ相談を。
+    </div>
+  </section>
+
+  <!-- ===== 古物商許可とは ===== -->
+  <section class="sec band">
+    <p class="sec__code">Ch.1 — Definition</p>
+    <h2>そもそも古物商許可とは</h2>
+    <p>中古品を継続的に仕入れて販売する行為を「業として」行うために必要な、<b>都道府県公安委員会の許可</b>です。フリマアプリで中古品を仕入れてフリマアプリなどで売る行為は、原則としてこの許可の対象になります。</p>
+
+    <p class="check--label">許可が不要になる可能性がある例</p>
+    <ul class="check">
+      <li>自分の不用品の処分だけ（仕入れを伴わず、私物を売るのみ）</li>
+      <li>無償で譲り受けた物だけを販売する（対価を払って仕入れていない）</li>
+      <li>海外から輸入した新品のみを扱う（中古品の売買にあたらない）</li>
+    </ul>
+
+    <div class="note note--warn">
+      <span class="note__tag">Caution</span>
+      上はあくまで目安です。「継続性」「営利性」の判断は個別具体的。続けて売る予定があるなら、営業を始める前に要否を管轄警察署の生活安全課へ確認してください。
+    </div>
+  </section>
+
+  <!-- ===== STEP01 営業所 ===== -->
+  <section class="sec band">
+    <p class="sec__code">Ch.1 — Preparation</p>
+    <span class="step-tag">STEP 01</span>
+    <h2>営業所を決める</h2>
+    <p class="lead">「主たる営業所」を先に決めると管轄警察署が確定し、そこから全ての手続きが動き出します。</p>
+
+    <h3>自宅を営業所にする場合、この6つが自宅で完結するか</h3>
+    <ol class="steps">
+      <li>仕入れた古物の<b>保管</b>（売却まで安全に置けるスペース）</li>
+      <li>古物の<b>検品・撮影</b>（状態確認・写真・簡単な清掃）</li>
+      <li>フリマアプリでの<b>出品作業</b>（PC・スマホで商品説明を作成）</li>
+      <li>購入者との<b>連絡・問い合わせ対応</b></li>
+      <li><b>梱包・発送</b>作業（資材の保管、発送手配）</li>
+      <li><b>帳簿（取引記録）</b>の保管</li>
+    </ol>
+
+    <p class="check--label">自宅を営業所にできるか</p>
+    <ul class="check">
+      <li>自分名義または家族名義の物件である</li>
+      <li>賃貸なら、契約書に「事業利用可」の条項があるか確認済み</li>
+      <li>集合住宅なら、管理規約に反しないか確認済み</li>
+      <li>商品の保管場所を、生活空間と区切って確保できる</li>
+      <li>「使用権限を示す資料」が必要か、警察署に確認する</li>
+    </ul>
+
+    <div class="note note--warn">
+      <span class="note__tag">Caution</span>
+      賃貸・分譲マンションは、契約書や管理規約で事業利用が禁止されていないか必ず事前確認を。無断で営業所にすると契約違反になる可能性があります。
+    </div>
+  </section>
+
+  <!-- ===== STEP02 警察署 ===== -->
+  <section class="sec band">
+    <p class="sec__code">Ch.1 — Preparation</p>
+    <span class="step-tag">STEP 02</span>
+    <h2>管轄の警察署を調べる</h2>
+    <p>申請先は「<b>主たる営業所を管轄する警察署</b>」。担当は通常、生活安全課などです。自宅所在地ではなく<b>営業所の所在地</b>で判定される点に注意。</p>
+
+    <h3>調べ方の目安</h3>
+    <ol class="steps">
+      <li>各都道府県警察の公式サイトで「古物商許可」ページを検索</li>
+      <li>「管轄区域一覧」で自宅住所を含む警察署名を確認</li>
+      <li>電話番号・生活安全課の受付曜日／時間を控える</li>
+    </ol>
+
+    <p class="check--label">警察署について確認する6項目</p>
+    <ul class="check">
+      <li>警察署の正式名称（申請書に記載するため正確に）</li>
+      <li>担当課・担当係の名称（生活安全課 防犯係 など）</li>
+      <li>直通電話番号（代表ではなく担当課へ直通のもの）</li>
+      <li>受付曜日・時間（平日のみ／時間帯限定が多い）</li>
+      <li>事前予約の要否</li>
+      <li>手数料の納付方法・必要書類の部数</li>
+    </ul>
+  </section>
+
+  <!-- ===== STEP03 電話 ===== -->
+  <section class="sec band">
+    <p class="sec__code">Ch.1 — Preparation</p>
+    <span class="step-tag">STEP 03</span>
+    <h2>書類を集める前に、まず電話する</h2>
+    <p class="lead">先に一度電話しておくと、無駄な書類集めや再訪問を大きく減らせます。</p>
+
+    <div class="script">
+      個人でフリマアプリを使った物販を始めるため、古物商許可を申請したいです。日本国内に住んでいて、自宅を営業所にする予定です。中古品をフリマアプリで仕入れ、フリマアプリなどで販売する予定ですが、必要書類と申請方法を教えてください。
+    </div>
+
+    <p class="check--label">電話で確認する12項目</p>
+    <ul class="check">
+      <li>申請書の様式・入手方法</li>
+      <li>必要書類の一覧と部数</li>
+      <li>身分証明書（本籍地発行）の必要性</li>
+      <li>住民票の記載事項（本籍／個人番号）</li>
+      <li>誓約書の様式・必要枚数</li>
+      <li>略歴書の記載範囲（直近5年間 など）</li>
+      <li>自宅を営業所とする際の資料の要否</li>
+      <li>扱う古物区分の記載方法</li>
+      <li>フリマアプリ利用時のURL届出の要否</li>
+      <li>手数料の金額・納付方法</li>
+      <li>申請から許可までのおおよその期間</li>
+      <li>申請日の予約可否と持ち物</li>
+    </ul>
+  </section>
+
+  <!-- ===== 書類の全体像 ===== -->
+  <section class="sec band">
+    <p class="sec__code">Ch.2 — Documents</p>
+    <h2>必要書類の全体像（7種類）</h2>
+    <p class="lead">個人が自宅を営業所とする一般的なケースで必要になる書類です。</p>
+
+    <div class="grid">
+      <div><p class="k">01</p><h4>古物商許可申請書</h4><p>所定様式。氏名・住所・営業所・扱う古物区分などを記入する中心書類。</p></div>
+      <div><p class="k">02</p><h4>略歴書</h4><p>最近5年間の職歴などを空白期間なく時系列で記載。本人と（選任時は）管理者の分。</p></div>
+      <div><p class="k">03</p><h4>住民票</h4><p>本籍記載のもの。外国籍は国籍等記載のもの。個人番号は原則不要。</p></div>
+      <div><p class="k">04</p><h4>誓約書</h4><p>古物営業法上の欠格事由に該当しないことを誓約する所定様式。</p></div>
+      <div><p class="k">05</p><h4>身分証明書</h4><p>本籍地の市区町村が発行する公的書類。運転免許証やマイナンバーカードではない。</p></div>
+      <div><p class="k">06</p><h4>管理者関係書類</h4><p>本人以外を管理者にする場合、その人の略歴書・住民票・身分証明書・誓約書。</p></div>
+      <div><p class="k">07</p><h4>URL関係資料</h4><p>独自ドメインHPやモール店舗などURLを届け出る場合、使用権限を示す資料。</p></div>
+    </div>
+
+    <div class="note">
+      <span class="note__tag">Note</span>
+      住民票と身分証明書は<b>発行から3か月以内</b>のもの。複数枚必要な書類は同じ内容で用意。迷う欄は空欄のまま警察署に相談を。
+    </div>
+  </section>
+
+  <!-- ===== DOC01 住民票 ===== -->
+  <section class="sec band">
+    <p class="sec__code">Ch.2 — Doc 01 / 住民票</p>
+    <h2>住民票を取得する</h2>
+    <p>住民登録している市区町村役場、または対応自治体ならコンビニ交付で取得します。</p>
+
+    <ol class="steps">
+      <li><b>「本籍記載」は必須</b>：交付申請書の「本籍の記載」欄にチェック。記載なしは受理されません。</li>
+      <li><b>外国籍の方は「国籍等」記載のもの</b>：在留資格・在留期間等が記載されたもの。窓口で明確に伝える。</li>
+      <li><b>「個人番号」記載は原則不要</b>：誤って記載付きを取らないよう「個人番号なし」を窓口で明示。</li>
+    </ol>
+
+    <p class="check--label">取得時に確認する5項目</p>
+    <ul class="check">
+      <li>「本籍」が記載されている</li>
+      <li>氏名・住所・生年月日が申請書と一致している</li>
+      <li>個人番号（マイナンバー）は記載されていない</li>
+      <li>外国籍の方は「国籍等・在留資格」が記載されている</li>
+      <li>申請日時点で発行から3か月以内である</li>
+    </ul>
+  </section>
+
+  <!-- ===== DOC02 身分証明書 ===== -->
+  <section class="sec band">
+    <p class="sec__code">Ch.2 — Doc 02 / 身分証明書 ★重要</p>
+    <h2>「身分証明書」の落とし穴</h2>
+
+    <div class="note note--warn">
+      <span class="note__tag">Attention</span>
+      ここでいう「身分証明書」は、<b>運転免許証やマイナンバーカードのことではありません。</b>
+    </div>
+
+    <p>正体は、<b>本籍地の市区町村が発行する公的な証明書類</b>です。「破産手続開始の決定を受けて復権を得ない者ではないこと」「後見登記等ファイルに記録がないこと」などを証明します。</p>
+
+    <div class="tablewrap">
+      <table>
+        <tr><th>これは違う</th><td>運転免許証・マイナンバーカード</td></tr>
+        <tr><th>これが必要</th><td>本籍地の市区町村発行の「身分証明書」</td></tr>
+      </table>
+    </div>
+
+    <p class="check--label">取得時のチェック4項目</p>
+    <ul class="check">
+      <li>本籍地の市区町村で取得している（住民票の住所ではない）</li>
+      <li>「破産手続開始の決定を受けて復権を得ない者ではない」旨の記載がある</li>
+      <li>本籍地 ≠ 現住所なら、郵送請求・代理取得の方法を確認済み</li>
+      <li>申請日時点で発行から3か月以内である</li>
+    </ul>
+
+    <div class="note">
+      <span class="note__tag">Point</span>
+      本籍地が遠方なら、郵送請求のリードタイム（1〜2週間程度）を見越して早めに手配を。
+    </div>
+  </section>
+
+  <!-- ===== DOC03 略歴書 ===== -->
+  <section class="sec band">
+    <p class="sec__code">Ch.2 — Doc 03 / 略歴書</p>
+    <h2>略歴書を作成する</h2>
+    <p><b>最近5年間を、空白期間なしで</b>記載します。会社員／自営業／主婦（主夫）／学生／無職／求職中も、そのまま事実として書けば大丈夫です。</p>
+
+    <div class="tablewrap">
+      <table>
+        <tr><th>期間</th><th>職歴・所属など</th></tr>
+        <tr><td class="p">R3.4 – R5.3</td><td>株式会社○○ 会社員</td></tr>
+        <tr><td class="p">R5.4 – R6.8</td><td>パート勤務</td></tr>
+        <tr><td class="p">R6.9 – R7.3</td><td>無職</td></tr>
+        <tr><td class="p">R7.4 – 現在</td><td>個人事業（物販準備）</td></tr>
+      </table>
+    </div>
+
+    <p class="check--label">チェック5項目</p>
+    <ul class="check">
+      <li>最近5年間分をカバーしている</li>
+      <li>時系列に並び、空白期間が一切ない</li>
+      <li>無職・求職中も事実どおり記載</li>
+      <li>住所・氏名・生年月日が住民票と一致</li>
+      <li>末尾に作成日・署名（押印の要否は都度確認）</li>
+    </ul>
+    <p class="lead" style="font-size:.8rem;">※ 別に管理者を選任する場合は、その方の略歴書も別途必要です。</p>
+  </section>
+
+  <!-- ===== DOC04-05 誓約書・管理者 ===== -->
+  <section class="sec band">
+    <p class="sec__code">Ch.2 — Doc 04–05 / 誓約書 &amp; 管理者</p>
+    <h2>誓約書と管理者を決める</h2>
+    <p>自宅を営業所として本人が管理者を兼任するなら、本人の誓約書と略歴書だけで足りるのが一般的です。</p>
+
+    <h3>誓約書</h3>
+    <ul class="check">
+      <li>申請書と一緒に配布される所定様式を使う</li>
+      <li>氏名・住所は住民票と完全一致で記入</li>
+      <li>「本人用」「管理者用」の2種類があり得るため警察署に確認</li>
+      <li>日付は空欄で持参し、窓口で確認しながら記入が安全</li>
+    </ul>
+
+    <h3>管理者を決める</h3>
+    <ul class="check">
+      <li>自宅を営業所＆本人が業務するなら「本人＝管理者」で可</li>
+      <li>本人以外を管理者にするなら、その人の書類が別途必要（住民票／身分証明書／略歴書／誓約書）</li>
+      <li>管理者は営業所で実際に業務を統括できる人（常勤性に注意）</li>
+      <li>欠格事由（未成年／破産・復権未取得／一定の前科ありなど）に該当しない</li>
+    </ul>
+  </section>
+
+  <!-- ===== 13区分 ===== -->
+  <section class="sec band">
+    <p class="sec__code">Ch.2 — 13 Categories</p>
+    <h2>古物の13区分</h2>
+    <p class="lead">申請書では扱う古物の区分を選びます。フリマ物販は複数区分にまたがるので、先に整理しておきましょう。</p>
+
+    <div class="grid">
+      <div><p class="k">01</p><h4>美術品類</h4><p>絵画、書、彫刻、工芸品、美術刀剣類</p></div>
+      <div><p class="k">02</p><h4>衣類</h4><p>コート、シャツ、靴、バッグ、和服、洋服</p></div>
+      <div><p class="k">03</p><h4>時計・宝飾品類</h4><p>腕時計、指輪、ネックレス、貴金属、宝石</p></div>
+      <div><p class="k">04</p><h4>自動車</h4><p>本体、タイヤ、部品類</p></div>
+      <div><p class="k">05</p><h4>自動二輪車・原付</h4><p>オートバイ、原付、部品類</p></div>
+      <div><p class="k">06</p><h4>自転車類</h4><p>本体、部品（サドル、カゴ 等）</p></div>
+      <div><p class="k">07</p><h4>写真機類</h4><p>カメラ、レンズ、望遠鏡、双眼鏡</p></div>
+      <div><p class="k">08</p><h4>事務機器類</h4><p>パソコン、コピー機、電話機、レジ</p></div>
+      <div><p class="k">09</p><h4>機械工具類</h4><p>中古家電、電動工具、工作機械</p></div>
+      <div style="border-color:var(--blue);"><p class="k">10 ★フリマで多い</p><h4>道具類</h4><p>家具、楽器、玩具、CD/DVD、ゲーム機、日用品</p></div>
+      <div><p class="k">11</p><h4>皮革・ゴム製品類</h4><p>革バッグ、財布、ベルト、革靴</p></div>
+      <div><p class="k">12</p><h4>書籍</h4><p>古本、雑誌、コミック、絵本</p></div>
+      <div><p class="k">13</p><h4>金券類</h4><p>商品券、乗車券、郵便切手、テレカ</p></div>
+    </div>
+
+    <div class="note">
+      <span class="note__tag">Tip</span>
+      「商品名」ではなく「性質」で判断します。同じバッグでも、革製なら皮革・ゴム製品類、布・ナイロンなら衣類、宝飾仕様なら時計・宝飾品類。<b>主として扱う区分は1つに絞る</b>必要がありますが、扱う区分自体は複数選べます。
+    </div>
+  </section>
+
+  <!-- ===== インターネット取引 ===== -->
+  <section class="sec band">
+    <p class="sec__code">Ch.2 — Internet</p>
+    <h2>インターネット取引の扱い</h2>
+    <p>取引形態によってURL届出の要否や必要書類が変わります。次の5パターンを整理して、電話で確認しましょう。</p>
+    <p class="lead">フリマアプリ通常アカウント／独自ドメインHP／ネットショップ／モール店舗ページ／事業者向けショップ機能</p>
+
+    <div class="script">
+      フリマアプリの通常アカウントで個人として販売する場合、そのアカウントのURLや店舗ページの届出は必要でしょうか。また、将来フリマアプリの事業者向けショップ機能を使う場合や、独自ドメインの販売ページを設ける場合のURL関係の書類についても教えてください。
+    </div>
+
+    <p class="check--label">URL使用権限を示す資料の例</p>
+    <ul class="check">
+      <li>プロバイダ発行の登録通知書のコピー（申請者名義でドメイン契約している旨）</li>
+      <li>ドメイン登録情報のプリントアウト（登録者名・登録日・有効期限）</li>
+      <li>WHOIS検索結果のプリントアウト（申請者＝登録者であること）</li>
+      <li>その他、登録者名等が確認できる資料（レジストラ管理画面のスクショ 等）</li>
+    </ul>
+  </section>
+
+  <!-- ===== 申請書記入 ===== -->
+  <section class="sec band">
+    <p class="sec__code">Ch.3 — Application</p>
+    <h2>申請書を記入してセルフチェック</h2>
+    <p class="lead">誤字・記入漏れが差戻しの主な原因です。揃ったら記入とチェックを。</p>
+
+    <p class="check--label">申請書の主な記載項目（11個）</p>
+    <ul class="check">
+      <li>氏名・住所・電話番号</li>
+      <li>生年月日・本籍</li>
+      <li>主たる営業所の所在地</li>
+      <li>営業所の名称</li>
+      <li>取り扱う古物の区分（複数可）</li>
+      <li>主として取り扱う古物区分（1つ）</li>
+      <li>管理者の氏名・住所</li>
+      <li>行商（古物市場・出張買取など）の有無</li>
+      <li>ホームページ・URL利用の有無</li>
+      <li>届出するURL（独自ドメイン等）</li>
+      <li>申請日・署名（押印は都度確認）</li>
+    </ul>
+
+    <p class="check--label">提出書類チェック</p>
+    <ul class="check">
+      <li>申請書（記入・署名済）</li>
+      <li>略歴書（最近5年間／空白なし）</li>
+      <li>住民票（本籍記載／3か月以内）</li>
+      <li>誓約書（所定様式）</li>
+      <li>身分証明書（本籍地市区町村発行／3か月以内）</li>
+      <li>管理者用書類（別人選任の場合）</li>
+      <li>URL関係資料（独自ドメイン届出時）</li>
+      <li>使用権限資料（自宅・営業所）※要否は要確認</li>
+    </ul>
+
+    <div class="note">
+      <span class="note__tag">Tip</span>
+      迷う欄は空欄のまま持参し、窓口で相談するのが最も安全。自己判断で書いた誤情報は差戻しの主因になります。
+    </div>
+  </section>
+
+  <!-- ===== 申請→審査 ===== -->
+  <section class="sec band">
+    <p class="sec__code">Ch.3 — Submit &amp; Review</p>
+    <h2>警察署へ申請 → 審査</h2>
+    <p>揃ったら管轄警察署に予約（必要な場合）し、生活安全課の窓口で申請します。</p>
+
+    <div class="fee">
+      <span class="fee__num">¥19,000</span>
+      <span class="fee__cap">申請手数料（納付方法は都道府県で異なる／収入証紙・現金など。事前確認は必須）</span>
+    </div>
+
+    <p class="check--label">申請日の持ち物（7点）</p>
+    <ul class="check">
+      <li>必要書類一式（予備に1部コピーがあると安心）</li>
+      <li>申請手数料 19,000円（納付方法に応じた形式で）</li>
+      <li>本人確認書類（運転免許証・マイナンバーカード等）</li>
+      <li>印鑑（認印可／押印の要否は事前確認）</li>
+      <li>筆記用具（消せないボールペン）</li>
+      <li>受付曜日・時間内、必要なら事前予約完了済み</li>
+      <li>許可証を受け取るまで営業しない、と理解している</li>
+    </ul>
+
+    <div class="note note--warn">
+      <span class="note__tag">Important</span>
+      申請した時点ではまだ<b>未許可</b>です。許可証を受け取るまで、営業を開始してはいけません。
+    </div>
+  </section>
+
+  <!-- ===== 許可後 ===== -->
+  <section class="sec band">
+    <p class="sec__code">Ch.4 — After License</p>
+    <h2>許可はゴールではなくスタート</h2>
+    <p class="lead">許可後は、継続する3つの義務があります。</p>
+
+    <h3>義務1 ・ 仕入れ記録を残す</h3>
+    <ul class="check">
+      <li>取引年月日／古物の種類・数量／特徴（型番・状態など）</li>
+      <li>相手方の住所・氏名・職業・年齢</li>
+      <li>仕入れ価格／仕入れ先サービス名（フリマアプリ名等）</li>
+      <li>取引画面の資料（スクリーンショット等）</li>
+    </ul>
+
+    <h3>義務2 ・ 取引相手を確認する</h3>
+    <ul class="check">
+      <li>相手方の住所・氏名・職業・年齢を確認</li>
+      <li>確認方法は住所地宛の送付／本人確認書類の提示／電子的な本人確認 など</li>
+      <li>フリマアプリで買い受ける場合も確認義務が原則適用される</li>
+      <li>確認方法・記録の取り方は必ず警察署に確認</li>
+    </ul>
+
+    <h3>義務3 ・ 帳簿を管理する</h3>
+    <ul class="check">
+      <li>古物営業法に基づく所定様式の帳簿を用意（データ管理も可）</li>
+      <li>仕入れ・販売の両方を記録</li>
+      <li>後から確認できる状態で保管（方法・期間は管轄警察署の指示に従う）</li>
+    </ul>
+
+    <div class="note note--warn">
+      <span class="note__tag">Caution</span>
+      フリマアプリの本人確認機能だけで、古物営業法上の確認義務を満たすとは限りません。運用は必ず警察署に確認を。
+    </div>
+  </section>
+
+  <!-- ===== 記録フロー ===== -->
+  <section class="sec band">
+    <p class="sec__code">Ch.4 — Record Flow</p>
+    <h2>記録の抜けが起きにくいオペレーション例</h2>
+
+    <h3>仕入れ側</h3>
+    <ol class="steps">
+      <li>フリマアプリで購入（取引画面のスクショ取得）</li>
+      <li>帳簿に記録（取引年月日／商品／相手方／価格／アプリ名）</li>
+      <li>スクショを商品IDと対応づけて保存</li>
+      <li>商品到着 → 検品（写真・状態記録）</li>
+      <li>特徴・状態を確認し帳簿の補足欄に追記</li>
+    </ol>
+
+    <h3>販売側</h3>
+    <ol class="steps">
+      <li>フリマアプリに出品（商品ID発行／出品画面保存）</li>
+      <li>売れた瞬間、購入者情報を記録（住所・氏名・取引画面）</li>
+      <li>帳簿に販売記録（取引年月日・販売価格・相手方）</li>
+      <li>梱包・発送（発送控え・追跡番号を記録）</li>
+      <li>売上・手数料を記録し、次の仕入れ資金へ反映</li>
+    </ol>
+  </section>
+
+  <!-- ===== APPENDIX ===== -->
+  <section class="sec band">
+    <p class="sec__code">Appendix — Prefecture-specific</p>
+    <h2>都道府県で運用が異なる8項目</h2>
+    <p class="lead">ここは全国一律に断定できません。必ず管轄警察署に事前確認を。</p>
+    <ul class="check">
+      <li>自宅を営業所にできるか／追加資料（間取り図・写真など）の要否</li>
+      <li>営業所の使用権限を示す資料（契約書・使用承諾書など）の要否と種類</li>
+      <li>古物区分の選び方／「主として扱う」区分の運用</li>
+      <li>行商の要否・記載方法</li>
+      <li>フリマアプリ利用時の記載方法（アカウントURL・ショップページ）</li>
+      <li>URL届出の要否＆使用権限資料</li>
+      <li>必要書類の部数／手数料の納付方法（収入証紙・現金・電子納付）</li>
+      <li>取引相手の本人確認方法の運用（電子的確認の可否）</li>
+    </ul>
+  </section>
+
+  <!-- ===== まとめ ===== -->
+  <section class="sec band">
+    <p class="sec__code">Summary — 8 Steps</p>
+    <h2>全体を8ステップで振り返る</h2>
+    <ol class="steps">
+      <li><b>営業所を決める</b>（自宅で6機能が完結する）</li>
+      <li><b>管轄警察署を調べる</b>（生活安全課／受付時間）</li>
+      <li><b>警察署へ電話</b>（12項目を確認）</li>
+      <li><b>書類を集める</b>（住民票／身分証明書／略歴書 ほか）</li>
+      <li><b>申請書を記入</b>（古物区分／URL／行商を確定）</li>
+      <li><b>警察署に申請</b>（手数料 19,000円 納付）</li>
+      <li><b>審査 → 許可証受取</b>（受け取るまで営業しない）</li>
+      <li><b>仕入れ／販売／帳簿を運用</b>（記録・確認・保管を継続）</li>
+    </ol>
+    <p>まずは、営業所を管轄する警察署へ電話することから。一歩ずつ進めれば、フリマアプリを軸にした中古品販売を安心して始められます。</p>
+  </section>
+
+  <!-- ===== CTA ===== -->
+  <div class="cta band">
+    <h2>「動かし方」まで一緒に整えたい方へ</h2>
+    <p>許可を取ったあと、仕入れルート・出品・帳簿を仕組みにして続けていく部分を、コミュニティ「セレクト」で扱っています。気になる方は公式LINEからご案内します。</p>
+    <a class="btn" href="https://lin.ee/xxxxxxxx">公式LINEを見る</a>
+    <p class="fine">※ 登録は無料です。合わないと感じたらいつでもブロックで解除できます。</p>
+  </div>
+
+  <!-- ===== フッター ===== -->
+  <footer class="foot band">
+    <p class="disc">
+      【免責】本マニュアルは、一般に公開されている情報をもとにさめちゃんが独自にまとめた学習用資料です。制度・様式・運用は改正や地域差があり、正確性・最新性を保証するものではありません。実際の手続きは必ず管轄警察署および公的機関の案内に従ってください。本資料の利用によって生じたいかなる損害についても責任を負いかねます。<br>
+      無断転載・再配布はご遠慮ください。
+    </p>
+    <p class="sig">さめちゃん ／ 起業と物販のはなし</p>
+    <a class="back" href="../">← 特典ライブラリに戻る</a>
+  </footer>
+
+</div>
+</body>
+</html>

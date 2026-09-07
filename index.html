@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="さめちゃんがこれまでに配布してきた特典を、いつでも見られるようにまとめたアクセスページです。">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#F4F8FC">
+<title>さめちゃん 特典ライブラリ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    color-scheme: light;
+    --paper:#F4F8FC; --surface:#FFFFFF; --ink:#1C2733; --head:#123A63; --muted:#5C6B7A;
+    --blue:#1E6FB8; --blue-ink:#155A97; --sky-wash:#E9F3FB;
+    --line:rgba(18,58,99,.16); --line-soft:rgba(18,58,99,.09);
+    --shadow:0 1px 2px rgba(18,58,99,.06), 0 16px 40px rgba(18,58,99,.08);
+    --radius:16px; --measure:60rem;
+  }
+  *,*::before,*::after{ box-sizing:border-box; }
+  html{ background:var(--paper); -webkit-text-size-adjust:100%; }
+  body{
+    margin:0; background:var(--paper); color:var(--ink);
+    font-family:"Noto Sans JP","Hiragino Kaku Gothic ProN","Yu Gothic",Meiryo,system-ui,sans-serif;
+    line-height:1.8; -webkit-font-smoothing:antialiased;
+  }
+  a{ color:inherit; text-decoration:none; }
+  a:focus-visible,button:focus-visible{ outline:2px solid var(--blue); outline-offset:3px; border-radius:6px; }
+  .wrap{ width:min(100% - 2.6rem, var(--measure)); margin:0 auto; }
+
+  header.top{ padding:2.8rem 0 1.6rem; }
+  .kicker{ font-family:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace; font-size:.7rem; font-weight:600; letter-spacing:.18em; text-transform:uppercase; color:var(--blue); }
+  header.top h1{ margin:.7rem 0 0; font-size:1.9rem; font-weight:900; color:var(--head); letter-spacing:.01em; text-wrap:balance; }
+  @media (min-width:640px){ header.top h1{ font-size:2.3rem; } }
+  header.top p{ margin:.8rem 0 0; max-width:34rem; color:var(--muted); font-size:.96rem; }
+  .brandline{ display:inline-flex; align-items:center; gap:.55rem; margin-top:1.4rem; font-size:.8rem; font-weight:700; color:var(--head); letter-spacing:.03em; }
+  .brandline::before{ content:""; width:.5rem; height:.5rem; border-radius:50%; background:var(--blue); box-shadow:0 0 0 .28rem rgba(30,111,184,.16); }
+
+  .filters{ position:sticky; top:0; z-index:10; display:flex; flex-wrap:wrap; gap:.5rem; padding:1rem 0; background:rgba(244,248,252,.92); backdrop-filter:blur(8px); border-bottom:1px solid var(--line-soft); }
+  .filters button{
+    font:inherit; font-size:.8rem; font-weight:700; cursor:pointer;
+    padding:.45rem .95rem; border-radius:999px; border:1px solid var(--line);
+    background:var(--surface); color:var(--muted);
+  }
+  .filters button[aria-pressed="true"]{ background:var(--blue); color:#fff; border-color:var(--blue); }
+  .count{ margin:1.2rem 0 .4rem; font-family:"IBM Plex Mono",monospace; font-size:.74rem; letter-spacing:.06em; color:var(--muted); }
+
+  .grid{ display:grid; grid-template-columns:repeat(auto-fill,minmax(min(100%,17rem),1fr)); gap:1rem; padding-bottom:3rem; }
+  .card{
+    display:flex; flex-direction:column; background:var(--surface);
+    border:1px solid var(--line); border-radius:var(--radius); padding:1.2rem 1.2rem 1.15rem;
+    box-shadow:var(--shadow); transition:transform .15s ease, border-color .15s ease;
+  }
+  .card:hover{ transform:translateY(-2px); border-color:var(--blue); }
+  .card .no{ font-family:"IBM Plex Mono",monospace; font-size:.72rem; font-weight:600; color:var(--blue); letter-spacing:.08em; }
+  .card .cat{ align-self:flex-start; margin-top:.5rem; font-size:.7rem; font-weight:700; color:var(--muted); border:1px solid var(--line); border-radius:999px; padding:.15rem .6rem; }
+  .card h2{ margin:.7rem 0 .4rem; font-size:1.05rem; font-weight:900; color:var(--head); line-height:1.5; }
+  .card p{ margin:0; font-size:.85rem; color:var(--muted); flex:1; }
+  .card .tags{ display:flex; flex-wrap:wrap; gap:.35rem; margin-top:.9rem; }
+  .card .tags span{ font-family:"IBM Plex Mono",monospace; font-size:.66rem; color:var(--muted); }
+  .card .go{ margin-top:1rem; font-size:.82rem; font-weight:700; color:var(--blue-ink); }
+
+  .empty{ grid-column:1/-1; padding:2.5rem 1rem; text-align:center; color:var(--muted); font-size:.9rem; border:1px dashed var(--line); border-radius:var(--radius); }
+
+  footer{ padding:2rem 0 3rem; border-top:1px solid var(--line-soft); color:var(--muted); font-size:.78rem; }
+  @media (prefers-reduced-motion:reduce){ .card{ transition:none; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="top">
+    <span class="kicker">Bonus Library</span>
+    <h1>さめちゃん 特典ライブラリ</h1>
+    <p>これまでに配布してきた特典を、いつでも見返せるように1か所にまとめました。気になるものから開いてください。</p>
+    <span class="brandline">さめちゃん ／ 起業と物販のはなし</span>
+  </header>
+
+  <nav class="filters" id="filters" aria-label="カテゴリで絞り込み"></nav>
+  <p class="count" id="count"></p>
+  <main class="grid" id="grid"></main>
+
+  <footer>
+    このページのURLはあなた専用ではありません。共有・スクショはご自由に。内容の無断転載・再配布はご遠慮ください。<br>
+    © さめちゃん
+  </footer>
+</div>
+
+<script>
+  /* =========================================================================
+     特典を追加するとき：この配列に1件足すだけ。カード・絞り込み・件数は自動。
+     slug = フォルダ名（例 "kobutsusho" → /kobutsusho/ を開く）
+     ========================================================================= */
+  const BONUSES = [
+    {
+      no: "01",
+      category: "物販の土台",
+      title: "古物商許可 取得マニュアル",
+      desc: "個人で・自宅を営業所にして・フリマ中心で販売を続ける人へ。書類集めから申請、許可後の運用までを1本に。",
+      tags: ["古物商許可", "開業準備", "保存版"],
+      slug: "kobutsusho"
+    }
+    // 次の特典はここに { no:"02", category:"…", title:"…", desc:"…", tags:[…], slug:"…" },
+  ];
+
+  const grid = document.getElementById("grid");
+  const filtersEl = document.getElementById("filters");
+  const countEl = document.getElementById("count");
+  const cats = ["すべて", ...Array.from(new Set(BONUSES.map(b => b.category)))];
+  let active = "すべて";
+
+  function render(){
+    const list = active === "すべて" ? BONUSES : BONUSES.filter(b => b.category === active);
+    countEl.textContent = list.length + " 件を表示中";
+    grid.innerHTML = "";
+    if(!list.length){
+      const d = document.createElement("div");
+      d.className = "empty";
+      d.textContent = "このカテゴリの特典は順次移行中です。";
+      grid.appendChild(d);
+      return;
+    }
+    for(const b of list){
+      const a = document.createElement("a");
+      a.className = "card";
+      a.href = b.slug + "/";
+      a.innerHTML =
+        '<span class="no">特典 ' + b.no + '</span>' +
+        '<span class="cat"></span>' +
+        '<h2></h2><p></p>' +
+        '<div class="tags">' + b.tags.map(() => '<span></span>').join('') + '</div>' +
+        '<span class="go">この特典を見る →</span>';
+      a.querySelector(".cat").textContent = b.category;
+      a.querySelector("h2").textContent = b.title;
+      a.querySelector("p").textContent = b.desc;
+      const spans = a.querySelectorAll(".tags span");
+      b.tags.forEach((t,i) => { spans[i].textContent = "#" + t; });
+      grid.appendChild(a);
+    }
+  }
+
+  for(const c of cats){
+    const btn = document.createElement("button");
+    btn.type = "button";
+    btn.textContent = c;
+    btn.setAttribute("aria-pressed", String(c === active));
+    btn.addEventListener("click", () => {
+      active = c;
+      filtersEl.querySelectorAll("button").forEach(x => x.setAttribute("aria-pressed", String(x.textContent === c)));
+      render();
+    });
+    filtersEl.appendChild(btn);
+  }
+  render();
+</script>
+</body>
+</html>
