@@ -1,86 +1,33 @@
-# さめちゃん 特典サイト
+# さめちゃん 特典ライブラリ
 
-Googleドライブ配布をやめて、特典を「URLで渡す・いつでも見られる」形にするためのサイト一式。
-静的HTMLだけ。ビルド作業なし。GitHub Pages（無料）で公開する。
+公開URL: https://samecompany3.github.io/
 
----
+HTML・CSS・JavaScriptだけで動くGitHub Pagesサイトです。ビルドや外部サービスの設定は不要です。
 
-## フォルダ構成
+## 現在の特典
 
-```
-特典サイト/
-├─ index.html          … 特典ライブラリ（まとめページ）。ここのURLをLINEで渡す
-├─ _template.html      … 特典1本を作るときの元ネタ（全部入りの見本）
-├─ .nojekyll           … GitHub Pagesの余計な処理を止める（消さない）
-├─ README.md           … このファイル
-└─ kobutsusho/
-   └─ index.html       … 特典①「古物商許可 取得マニュアル」
-```
+- product-selection/ : 商品選び5つの基準シート
+- batch-listing/ : 10品いっき出品チェックリスト
+- after-listing/ : 出品後チェックシート
+- listing-review/ : 売れないを直す5点チェックシート
+- ng-actions/ : メルカリNG行動チェックリスト
 
-1特典 = 1フォルダ + その中の `index.html`。
-フォルダ名（スラッグ）がそのままURLになる。例）`kobutsusho/` → `.../kobutsusho/`
+各特典の本文をWeb上で読めます。チェック欄はその場で操作でき、再読み込みするとリセットされます。downloads/ に保存用PDFが入っています。
 
----
+## 更新する場所
 
-## 新しい特典を1本追加する手順
+- 一覧: index.html
+- 本文: 各フォルダの index.html
+- 共通デザイン: assets/site.css
+- カテゴリ絞り込み: assets/site.js
+- 公式LINE: https://lin.ee/5Yp4quy （今回の配布資料のリンク）
 
-1. `_template.html` をコピーして `新スラッグ/index.html` として保存
-   - スラッグは半角英数字とハイフンだけ（例：`saishukka`, `photo-tips`）
-2. `<title>` / `<meta name="description">` / ヒーロー / 各セクションの中身を差し替える
-   - あいさつは必ずさめちゃんの口調で（「お疲れ様です、さめちゃんです。」始まり）
-   - 使わないコンポーネントのブロックは丸ごと削除してOK
-3. 一番下の CTA のリンクを確認（既定で公式LINE `https://lin.ee/9u4Rf9dD` が入っています。変わったらここを差し替え）
-4. `index.html`（ライブラリ）の `BONUSES` 配列に1件足す：
-   ```js
-   { no:"02", category:"カテゴリ名", title:"特典タイトル",
-     desc:"1〜2文の説明", tags:["タグ","タグ","タグ"], slug:"新スラッグ" },
-   ```
-5. 変更をGitHubにアップ（下記）。数分で反映される
+PDF内の一覧リンクは公開URLへ設定済みです。LINEリンクを変更するときはWeb本文とPDFの両方を更新してください。
 
-所要：1本あたり20〜40分（原稿があれば早い）。
+既存の kobutsusho/、mercari-claim/、profile/ は過去のリンクを維持するため残していますが、今回の一覧には掲載していません。
 
----
+## 公開
 
-## 公開の初期設定（最初の1回だけ）
+main ブランチをGitHub Pagesで公開します。既存の .nojekyll は残してください。更新後はGitHubのPagesデプロイ完了を確認します。
 
-1. GitHub アカウントを作る（無料）
-2. リポジトリを新規作成（例：`tokuten` / Public）
-3. この `特典サイト/` の中身を丸ごとアップロード
-   - GitHubの「Add file → Upload files」にドラッグでもOK
-4. リポジトリの Settings → Pages → Source を `Deploy from a branch` /
-   Branch を `main` / フォルダ `/ (root)` にして Save
-5. 数分後、`https://<ユーザー名>.github.io/tokuten/` で公開される
-6. そのURLを LINEステップ／ドライブリンクの差し替え先にする
-
-### 更新のしかた（2回目以降）
-
-- Webでファイルを直接編集 → コミット、または
-- ローカルで編集 → `git add . && git commit -m "更新" && git push`
-
----
-
-## デザインの決めごと（v2）
-
-| 要素 | 値 |
-|---|---|
-| 背景 | 白（`--surface:#FFFFFF` / 外側 `--paper:#F4F8FC`） |
-| 本文の色 | 暗い墨 `#1C2733`、見出しは暗い青 `#123A63` |
-| 差し色 | 青 `#1E6FB8` / 水色の面 `#E9F3FB`（＋注意色アンバー `#A96A15`） |
-| 本文フォント | Noto Sans JP |
-| 章コード・数字 | IBM Plex Mono |
-| 幅 | スマホ基準・1カラム・本文は約540px幅の「1枚の紙」 |
-| ダークモード | なし（白背景で固定） |
-
-配色・フォントを変えるときは各ファイル冒頭の `:root{ … }` だけ直せば全体に効く。
-`_template.html` の `<style>` ブロックと各特典ページの `<style>` は同じ内容なので、
-まとめて更新する場合は全ファイルにコピーする（数が増えたら共通CSS化を検討）。
-
----
-
-## 注意
-
-- `noindex` を各ページに入れてある＝Google検索には出ない。URLを知っていれば誰でも見られる。
-  検索にも載せたい特典は、そのページの `<meta name="robots" ...>` の行を削除する。
-- 特典本文は「一般公開情報をもとにした学習用資料」の位置づけ。断定・誇大表現は避け、
-  一次情報（公的機関・公式ヘルプ）を確認する一文をフッターに入れてある。
-- 実家・家族エピソード、住所、子どもの特定情報は載せない（公開発信の扱い）。
+noindex, nofollow を維持しています。これはアクセス制限ではなく、URLを知っている方は閲覧できます。
