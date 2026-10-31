@@ -20,7 +20,7 @@ HTML・CSS・JavaScriptだけで動くGitHub Pagesサイトです。ビルドや
 - 本文: 各フォルダの index.html
 - 共通デザイン: assets/site.css
 - カテゴリ絞り込み: assets/site.js
-- 公式LINE: https://lin.ee/5Yp4quy （今回の配布資料のリンク）
+- 公式LINE: https://lin.ee/qDFvWqm （今回の配布資料のリンク）
 
 PDF内の一覧リンクは公開URLへ設定済みです。LINEリンクを変更するときはWeb本文とPDFの両方を更新してください。
 
