@@ -19,3 +19,7 @@
 @media screen and (max-width:600px){table{font-size:18px}th:first-child,td:first-child{width:36%}}
 
 @media screen and (max-width:600px){[data-guide="expense-records"] .table-wrap{overflow:visible}[data-guide="expense-records"] thead{display:none}[data-guide="expense-records"] table,[data-guide="expense-records"] tbody,[data-guide="expense-records"] tr,[data-guide="expense-records"] td{display:block;width:100%}[data-guide="expense-records"] tr{padding:18px 0;border-bottom:1px solid #dbe6eb}[data-guide="expense-records"] td{padding:4px 0;border:0}[data-guide="expense-records"] td:first-child{width:100%;font-size:19px}}
+
+.gift img{aspect-ratio:1.6!important;object-fit:contain!important}.cover .heroart{height:auto;aspect-ratio:1.6;object-fit:contain}@media print{.cover .heroart{height:auto;max-height:100mm;object-fit:contain;aspect-ratio:1.6}}
+
+@media screen and (max-width:600px){[data-guide="listing-numbers"] th:first-child,[data-guide="listing-numbers"] td:first-child,[data-guide="research-five"] th:first-child,[data-guide="research-five"] td:first-child{width:55%}}
