@@ -11,7 +11,7 @@
 <style>
 :root{
   --bg:#f3f8f9;--surface:#ffffff;--ink:#1d3540;--muted:#5d7681;--line:#d6e5ea;
-  --sea:#1f7f99;--sea-soft:#e2f1f5;--sun:#f6b93b;--line-green:#06c755;
+  --sea:#1f7f99;--sea-soft:#e2f1f5;--sun:#f6b93b;--line-green:#06c755;--alert:#d9534f;
   --display:"Zen Maru Gothic","Hiragino Maru Gothic ProN","M PLUS 1p",sans-serif;
   --body:"M PLUS 1p","Hiragino Sans","Noto Sans JP",sans-serif;
 }
@@ -30,33 +30,41 @@ h1 em{font-style:normal;color:var(--sea);background:linear-gradient(transparent 
 .bar{height:8px;border-radius:99px;background:var(--line);overflow:hidden}
 .bar i{display:block;height:100%;width:0;background:var(--sea);border-radius:99px;transition:width .3s}
 .count{font-size:12px;color:var(--muted);text-align:right;margin-top:4px}
-.intro{text-align:center;font-weight:500;margin:8px 0 16px}
+.section-title{font-family:var(--display);font-weight:900;font-size:18px;text-align:center;margin:28px 0 4px}
+.section-sub{text-align:center;color:var(--muted);font-size:13px;margin:0 0 14px}
 ol.qs{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:14px}
 .q{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:18px 16px 16px;scroll-margin-top:72px}
 .q.missing{border-color:var(--sun);box-shadow:0 0 0 3px rgba(246,185,59,.3)}
 .qno{font-family:var(--display);font-weight:900;color:var(--sea);font-size:14px}
-.qtext{font-weight:700;margin:2px 0 12px;font-size:16px;line-height:1.6}
-.opts{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.qtext{font-weight:700;margin:2px 0 4px;font-size:16px;line-height:1.6}
+.qnote{font-size:12.5px;color:var(--muted);margin:0 0 10px}
+.opts{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:10px}
+.opts.wide{grid-template-columns:repeat(2,1fr)}
 .opts input{position:absolute;opacity:0;pointer-events:none}
 .opts label{display:flex;align-items:center;justify-content:center;text-align:center;min-height:46px;padding:6px 4px;border:1.5px solid var(--line);border-radius:12px;cursor:pointer;font-size:13.5px;font-weight:500;line-height:1.3;background:var(--surface)}
 .opts input:checked+label{background:var(--sea);border-color:var(--sea);color:#fff;font-weight:700}
 .opts input:focus-visible+label{outline:3px solid var(--sun);outline-offset:2px}
 .submit{margin-top:24px;text-align:center}
-.btn{display:inline-flex;align-items:center;justify-content:center;width:100%;max-width:420px;min-height:58px;border:none;border-radius:999px;font-family:var(--display);font-weight:900;font-size:18px;cursor:pointer;text-decoration:none}
+.btn{display:inline-flex;align-items:center;justify-content:center;width:100%;max-width:420px;min-height:58px;border:none;border-radius:999px;font-family:var(--display);font-weight:900;font-size:18px;cursor:pointer;text-decoration:none;padding:8px 16px;line-height:1.35}
 .btn-main{background:var(--sun);color:#3a2a00}
-.btn-line{background:var(--line-green);color:#fff}
+.btn-line{background:var(--line-green);color:#fff;flex-direction:column}
+.btn-line small{font-size:12.5px;font-weight:700;opacity:.95}
 .hint{font-size:12.5px;color:var(--muted);margin-top:8px;min-height:1.5em}
-.done{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:28px 20px;text-align:center;margin-top:28px}
+.done{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:28px 20px;margin-top:28px}
+.done .head{text-align:center}
 .done h2{font-family:var(--display);font-weight:900;font-size:24px;margin:6px 0 4px;line-height:1.4}
 .badge{display:inline-block;font-family:var(--display);font-weight:900;font-size:13px;color:var(--sea);background:var(--sea-soft);border-radius:999px;padding:4px 14px}
-.teaser{margin:16px auto 20px;max-width:30em;color:var(--muted)}
-.teaser b{color:var(--ink)}
-.gets{list-style:none;padding:0;margin:0 auto 22px;max-width:340px;text-align:left;display:flex;flex-direction:column;gap:6px}
-.gets li{padding-left:26px;position:relative;font-weight:500}
-.gets li::before{content:"";position:absolute;left:4px;top:.55em;width:12px;height:7px;border-left:2.5px solid var(--sea);border-bottom:2.5px solid var(--sea);transform:rotate(-45deg)}
-.kw{margin-top:14px;font-size:13px;color:var(--muted)}
-.kw code{font-family:var(--body);font-weight:700;color:var(--ink);background:var(--sea-soft);padding:2px 10px;border-radius:6px}
-.retry{margin-top:16px;background:none;border:none;color:var(--muted);text-decoration:underline;cursor:pointer;font:inherit;font-size:13px}
+.result{margin:18px 0 8px;font-size:15.5px;line-height:1.9}
+.result p{margin:0 0 14px}
+.result b{color:var(--sea)}
+.gift{margin:22px 0 0;padding:20px 16px;border-radius:16px;background:#fff8e6;border:2px dashed var(--sun);text-align:center}
+.gift h3{font-family:var(--display);font-weight:900;font-size:18px;margin:0 0 10px;line-height:1.5}
+.gift ul{list-style:none;padding:0;margin:0 auto 16px;max-width:320px;text-align:left}
+.gift li{padding-left:24px;position:relative;font-weight:700;margin:4px 0}
+.gift li::before{content:"🎁";position:absolute;left:0}
+.steps{font-size:13px;color:var(--muted);margin:12px 0 0;text-align:left;display:inline-block}
+.steps b{color:var(--alert)}
+.retry{display:block;margin:18px auto 0;background:none;border:none;color:var(--muted);text-decoration:underline;cursor:pointer;font:inherit;font-size:13px}
 footer{text-align:center;color:var(--muted);font-size:11.5px;margin-top:32px}
 @media (max-width:360px){.opts label{font-size:12.5px}}
 </style>
@@ -64,37 +72,47 @@ footer{text-align:center;color:var(--muted);font-size:11.5px;margin-top:32px}
 <body>
 <div class="wrap">
   <header>
-    <span class="eyebrow">無料・約2分</span>
-    <h1>あなたに合う<br><em>メルカリ物販タイプ</em>診断</h1>
-    <p class="lead">在宅で月10万を目指すなら、まずは自分の強みを知ることから。20問の質問で、あなたにぴったりの物販スタイルがわかります。</p>
-    <div class="meta"><span>全20問</span><span>直感で答えるだけ</span><span>結果はLINEで受け取り</span></div>
+    <span class="eyebrow" id="eyebrow">無料・約2分</span>
+    <h1 id="title">あなたに合う<br><em>メルカリ物販タイプ</em>診断</h1>
+    <p class="lead" id="lead">在宅で月10万を目指すなら、まずは自分の強みを知ることから。20問の質問で、あなたにぴったりの物販スタイルがわかります。</p>
+    <div class="meta" id="meta"><span>全20問</span><span>直感で答えるだけ</span><span>結果はすぐ表示</span></div>
   </header>
 
   <div class="progress" aria-hidden="true">
     <div class="bar"><i id="barFill"></i></div>
-    <div class="count"><span id="answered">0</span> / 20 問回答</div>
+    <div class="count"><span id="answered">0</span> / <span id="total">20</span> 問回答</div>
   </div>
 
   <form id="quiz" novalidate>
-    <p class="intro">以下の20個の質問に、できるだけ直感で答えてください</p>
-    <ol class="qs" id="qs"></ol>
+    <div id="diagBlock">
+      <h2 class="section-title">タイプ診断（20問）</h2>
+      <p class="section-sub">できるだけ直感で答えてください</p>
+      <ol class="qs" id="qs"></ol>
+    </div>
+
     <div class="submit">
-      <button type="submit" class="btn btn-main">今すぐ診断結果を見る</button>
+      <button type="submit" class="btn btn-main" id="submitBtn">今すぐ診断結果を見る</button>
       <p class="hint" id="hint" aria-live="polite"></p>
     </div>
   </form>
 
   <section class="done" id="done" hidden aria-live="polite">
-    <span class="badge">診断が完了しました</span>
-    <h2 id="doneTitle">あなたの物販タイプが判明しました</h2>
-    <p class="teaser" id="teaser"></p>
-    <ul class="gets">
-      <li>あなたのタイプの強みと注意点</li>
-      <li>タイプ別・最初の1ヶ月でやること</li>
-      <li>リサーチなしで3ヶ月月10万を目指す道のり</li>
-    </ul>
-    <a class="btn btn-line" id="lineBtn" href="#">LINEで診断結果を受け取る</a>
-    <p class="kw">ボタンを押すとLINEが開き、<code id="kwCode">診断</code> と入力されます。<br>そのまま<b>送信</b>すると、くわしい結果と特典が届きます。</p>
+    <div class="head">
+      <span class="badge" id="doneBadge">診断が完了しました</span>
+      <h2 id="doneTitle"></h2>
+    </div>
+    <div class="result" id="resultText"></div>
+
+    <div class="gift">
+      <h3>LINEに送信すると<br>こちらが届きます</h3>
+      <ul>
+        <li>診断特典</li>
+        <li>【3日間限定】特別動画</li>
+        <li>無料ロードマップ作成会のご案内</li>
+      </ul>
+      <a class="btn btn-line" id="lineBtn" href="#">LINEで特典を受け取る<small>LINEが開いたら「送信」を押してください</small></a>
+      <p class="steps">① ボタンを押すとLINEが開きます<br>② 入力欄に文字が入った状態になります<br>③ <b>そのまま「送信」</b>を押すと特典が届きます</p>
+    </div>
     <button type="button" class="retry" id="retry">もう一度診断する</button>
   </section>
 
@@ -103,15 +121,34 @@ footer{text-align:center;color:var(--muted);font-size:11.5px;margin-top:32px}
 
 <script>
 /* ===== 設定 ===== */
-const LINE_ID = "@336zoiov"; // 公式LINEのベーシックID
-const KEYWORDS = { A:"診断A", B:"診断B", C:"診断C", D:"診断D" }; // AiCmoの自動応答キーワードと一致させる
-const lineUrl = t => "https://line.me/R/oaMessage/" + encodeURIComponent(LINE_ID) + "/?" + encodeURIComponent(KEYWORDS[t]);
+const LINE_ID = "@336zoiov";
+const KEYWORDS = { A:"診断A", B:"診断B", C:"診断C", D:"診断D" }; // AiCmo自動応答のキーワードと一致させる
 
 const TYPES = {
-  A:{name:"コツコツ積み上げ型", teaser:"あなたの最大の武器は<b>「続ける力」</b>。物販で売上を伸ばす人に共通する素質を持っています。"},
-  B:{name:"スキマ時間フル活用型", teaser:"家事や育児の合間を<b>「稼ぐ時間」</b>に変えられるタイプ。ただし、ある作業でつまずきやすい傾向も。"},
-  C:{name:"センスで売れるディスプレイ型", teaser:"写真や説明文で<b>「欲しい」を作れる</b>タイプ。同じ商品でも売れるスピードに差がつきます。"},
-  D:{name:"数字で伸ばす戦略家型", teaser:"価格設定や分析で<b>逆算して月商を作れる</b>タイプ。気をつけたい落とし穴もあります。"}
+  A:{name:"コツコツ積み上げ型", body:[
+    "このタイプの強みは<br><b>「続ける力」</b>です",
+    "メルカリ物販は<br>毎日5〜10出品を<br>続けた人から<br>売上が伸びていきます",
+    "ただし注意点がひとつ<br>「何を仕入れればいい？」<br>で手が止まりやすいんです",
+    "だからこそ<br>商品が届く<br>リサーチなし仕入れが<br>いちばん相性抜群です",
+    "出品の習慣づくりだけに<br>集中できれば<br>3ヶ月で月10万も<br>十分に目指せます"]},
+  B:{name:"スキマ時間フル活用型", body:[
+    "家事や育児の合間を<br><b>「稼ぐ時間」</b>に<br>変えられるタイプです",
+    "でも実は<br>このタイプが<br>いちばん挫折しやすいのが<br>「リサーチ」なんです",
+    "商品を探すだけで<br>時間がなくなって<br>出品まで進まない",
+    "私自身も<br>ワンオペ育児中に<br>最初の3ヶ月は<br>ここで苦戦しました",
+    "リサーチなしで<br>商品が届く仕組みなら<br>スマホ1台とスキマ時間で<br>3ヶ月で月10万を<br>目指せます"]},
+  C:{name:"センスで売れるディスプレイ型", body:[
+    "写真や説明文で<br><b>「欲しい！」</b>を作れるのは<br>物販で大きな武器です",
+    "同じ商品でも<br>見せ方ひとつで<br>売れるスピードが<br>全然違うんです",
+    "ただこのタイプは<br>仕入れ先探しや<br>利益計算で<br>疲れてしまいがち",
+    "商品選びはプロに任せて<br>得意な見せ方に<br>集中するのが近道です",
+    "リサーチなし仕入れで<br>3ヶ月で月10万を<br>一緒に目指しませんか？"]},
+  D:{name:"数字で伸ばす戦略家型", body:[
+    "価格設定や値下げ<br>売れた理由の分析など<br><b>物販で伸びる力</b>を<br>持っています",
+    "ただしこのタイプは<br>「調べすぎて動けない」<br>状態になりやすいんです",
+    "仕入れ値が<br>1点300〜500円で一定なら<br>利益の逆算がシンプル",
+    "「月に何点売れば<br>月10万か」が<br>最初から見える状態で<br>スタートできます",
+    "リサーチなし仕入れで<br>3ヶ月で月10万の計画を<br>一緒に立てましょう"]}
 };
 const Q = [
   ["家事や育児の合間のちょっとした時間を、もっと有効に使いたい","B"],
@@ -138,58 +175,59 @@ const Q = [
 const OPTS = [["はい",2],["どちらでもない",1],["いいえ",0]];
 const TIE_ORDER = ["B","A","C","D"];
 
-const list = document.getElementById("qs");
+
+/* ---- 描画 ---- */
+const form = document.getElementById("quiz");
+const qsEl = document.getElementById("qs");
 Q.forEach(([text], i) => {
-  const n = i + 1;
-  const li = document.createElement("li");
-  li.className = "q"; li.id = "q" + n;
+  const n = i + 1, li = document.createElement("li");
+  li.className = "q"; li.id = "q" + n; li.dataset.name = "q" + n;
   li.innerHTML = `<div class="qno">Q${n}</div><p class="qtext" id="qt${n}">${text}</p>
     <div class="opts" role="radiogroup" aria-labelledby="qt${n}">
       ${OPTS.map(([lab,v],k)=>`<input type="radio" name="q${n}" id="q${n}o${k}" value="${v}"><label for="q${n}o${k}">${lab}</label>`).join("")}
     </div>`;
-  list.appendChild(li);
+  qsEl.appendChild(li);
 });
 
-const form = document.getElementById("quiz");
-const fill = document.getElementById("barFill");
-const answeredEl = document.getElementById("answered");
-const hint = document.getElementById("hint");
+const cards = () => [...form.querySelectorAll(".q")];
+document.getElementById("total").textContent = cards().length;
 
-function answeredCount(){ return Q.filter((_,i)=>form.querySelector(`input[name="q${i+1}"]:checked`)).length; }
+const fill = document.getElementById("barFill"), answeredEl = document.getElementById("answered"), hint = document.getElementById("hint");
+const picked = name => form.querySelector(`input[name="${name}"]:checked`);
 function update(){
-  const c = answeredCount();
-  fill.style.width = (c/Q.length*100) + "%";
+  const all = cards(), c = all.filter(li => picked(li.dataset.name)).length;
+  fill.style.width = (c / all.length * 100) + "%";
   answeredEl.textContent = c;
-  if (c === Q.length) hint.textContent = "";
+  if (c === all.length) hint.textContent = "";
 }
-form.addEventListener("change", e => {
-  const card = e.target.closest(".q");
-  if (card) card.classList.remove("missing");
-  update();
-});
+form.addEventListener("change", e => { const card = e.target.closest(".q"); if (card) card.classList.remove("missing"); update(); });
 
 function score(){
   const s = {A:0,B:0,C:0,D:0};
-  Q.forEach(([,t],i)=>{ const el = form.querySelector(`input[name="q${i+1}"]:checked`); if (el) s[t] += Number(el.value); });
+  Q.forEach(([,t],i)=>{ const el = picked("q"+(i+1)); if (el) s[t] += Number(el.value); });
   const max = Math.max(...Object.values(s));
   return TIE_ORDER.find(t => s[t] === max);
+}
+function lineUrl(text){
+  return "https://line.me/R/oaMessage/" + encodeURIComponent(LINE_ID) + "/?" + encodeURIComponent(text);
 }
 
 form.addEventListener("submit", e => {
   e.preventDefault();
-  const missing = Q.map((_,i)=>i+1).filter(n=>!form.querySelector(`input[name="q${n}"]:checked`));
-  document.querySelectorAll(".q.missing").forEach(el=>el.classList.remove("missing"));
+  const missing = cards().filter(li => !picked(li.dataset.name));
+  cards().forEach(li => li.classList.remove("missing"));
   if (missing.length){
-    missing.forEach(n=>document.getElementById("q"+n).classList.add("missing"));
-    hint.textContent = `まだ回答していない質問が${missing.length}問あります（Q${missing[0]}から）`;
-    document.getElementById("q"+missing[0]).scrollIntoView({behavior:"smooth",block:"start"});
+    missing.forEach(li => li.classList.add("missing"));
+    hint.textContent = `まだ回答していない質問が${missing.length}問あります`;
+    missing[0].scrollIntoView({behavior:"smooth",block:"start"});
     return;
   }
+  let keyword;
   const t = score();
+  keyword = KEYWORDS[t];
   document.getElementById("doneTitle").textContent = "あなたは「" + TYPES[t].name + "」でした";
-  document.getElementById("teaser").innerHTML = TYPES[t].teaser + "<br>くわしい結果と、あなたのタイプに合った月10万までの道のりはLINEでお届けします。";
-  document.getElementById("lineBtn").href = lineUrl(t);
-  document.getElementById("kwCode").textContent = KEYWORDS[t];
+  document.getElementById("resultText").innerHTML = TYPES[t].body.map(p => `<p>${p}</p>`).join("");
+  document.getElementById("lineBtn").href = lineUrl(keyword);
   form.hidden = true;
   document.querySelector(".progress").hidden = true;
   const done = document.getElementById("done");
