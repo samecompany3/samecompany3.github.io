@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<title>ロードマップ作成会 お申し込み前アンケート</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700;900&family=M+PLUS+1p:wght@400;500;700&display=swap">
+<style>
+:root{
+  --bg:#f3f8f9;--surface:#ffffff;--ink:#1d3540;--muted:#5d7681;--line:#d6e5ea;
+  --sea:#1f7f99;--sea-soft:#e2f1f5;--sun:#f6b93b;--line-green:#06c755;--alert:#d9534f;
+  --display:"Zen Maru Gothic","Hiragino Maru Gothic ProN","M PLUS 1p",sans-serif;
+  --body:"M PLUS 1p","Hiragino Sans","Noto Sans JP",sans-serif;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:15px;line-height:1.75;
+  padding:0 max(16px,env(safe-area-inset-right,0px)) 48px max(16px,env(safe-area-inset-left,0px))}
+.wrap{max-width:560px;margin:0 auto}
+header{padding-block:32px 8px;text-align:center}
+.eyebrow{display:inline-block;font-size:12px;letter-spacing:.12em;color:var(--sea);background:var(--sea-soft);border-radius:999px;padding:4px 14px;font-weight:700}
+h1{font-family:var(--display);font-weight:900;font-size:clamp(26px,7vw,34px);line-height:1.35;margin:14px 0 10px}
+h1 em{font-style:normal;color:var(--sea);background:linear-gradient(transparent 62%,rgba(246,185,59,.55) 62%)}
+.lead{color:var(--muted);margin:0 auto;max-width:34em}
+.meta{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-top:14px}
+.meta span{font-size:12px;border:1px solid var(--line);border-radius:999px;padding:2px 12px;color:var(--muted);background:var(--surface)}
+.progress{position:sticky;top:0;z-index:5;background:var(--bg);padding-block:12px}
+.bar{height:8px;border-radius:99px;background:var(--line);overflow:hidden}
+.bar i{display:block;height:100%;width:0;background:var(--sea);border-radius:99px;transition:width .3s}
+.count{font-size:12px;color:var(--muted);text-align:right;margin-top:4px}
+.section-title{font-family:var(--display);font-weight:900;font-size:18px;text-align:center;margin:28px 0 4px}
+.section-sub{text-align:center;color:var(--muted);font-size:13px;margin:0 0 14px}
+ol.qs{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:14px}
+.q{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:18px 16px 16px;scroll-margin-top:72px}
+.q.missing{border-color:var(--sun);box-shadow:0 0 0 3px rgba(246,185,59,.3)}
+.qno{font-family:var(--display);font-weight:900;color:var(--sea);font-size:14px}
+.qtext{font-weight:700;margin:2px 0 4px;font-size:16px;line-height:1.6}
+.qnote{font-size:12.5px;color:var(--muted);margin:0 0 10px}
+.opts{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:10px}
+.opts.wide{grid-template-columns:repeat(2,1fr)}
+.opts input{position:absolute;opacity:0;pointer-events:none}
+.opts label{display:flex;align-items:center;justify-content:center;text-align:center;min-height:46px;padding:6px 4px;border:1.5px solid var(--line);border-radius:12px;cursor:pointer;font-size:13.5px;font-weight:500;line-height:1.3;background:var(--surface)}
+.opts input:checked+label{background:var(--sea);border-color:var(--sea);color:#fff;font-weight:700}
+.opts input:focus-visible+label{outline:3px solid var(--sun);outline-offset:2px}
+.submit{margin-top:24px;text-align:center}
+.btn{display:inline-flex;align-items:center;justify-content:center;width:100%;max-width:420px;min-height:58px;border:none;border-radius:999px;font-family:var(--display);font-weight:900;font-size:18px;cursor:pointer;text-decoration:none;padding:8px 16px;line-height:1.35}
+.btn-main{background:var(--sun);color:#3a2a00}
+.btn-line{background:var(--line-green);color:#fff;flex-direction:column}
+.btn-line small{font-size:12.5px;font-weight:700;opacity:.95}
+.hint{font-size:12.5px;color:var(--muted);margin-top:8px;min-height:1.5em}
+.done{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:28px 20px;margin-top:28px}
+.done .head{text-align:center}
+.done h2{font-family:var(--display);font-weight:900;font-size:24px;margin:6px 0 4px;line-height:1.4}
+.badge{display:inline-block;font-family:var(--display);font-weight:900;font-size:13px;color:var(--sea);background:var(--sea-soft);border-radius:999px;padding:4px 14px}
+.result{margin:18px 0 8px;font-size:15.5px;line-height:1.9}
+.result p{margin:0 0 14px}
+.result b{color:var(--sea)}
+.gift{margin:22px 0 0;padding:20px 16px;border-radius:16px;background:#fff8e6;border:2px dashed var(--sun);text-align:center}
+.gift h3{font-family:var(--display);font-weight:900;font-size:18px;margin:0 0 10px;line-height:1.5}
+.gift ul{list-style:none;padding:0;margin:0 auto 16px;max-width:320px;text-align:left}
+.gift li{padding-left:24px;position:relative;font-weight:700;margin:4px 0}
+.gift li::before{content:"🎁";position:absolute;left:0}
+.steps{font-size:13px;color:var(--muted);margin:12px 0 0;text-align:left;display:inline-block}
+.steps b{color:var(--alert)}
+.retry{display:block;margin:18px auto 0;background:none;border:none;color:var(--muted);text-decoration:underline;cursor:pointer;font:inherit;font-size:13px}
+footer{text-align:center;color:var(--muted);font-size:11.5px;margin-top:32px}
+@media (max-width:360px){.opts label{font-size:12.5px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <span class="eyebrow" id="eyebrow">約1分・選ぶだけ</span>
+    <h1 id="title">無料ロードマップ作成会<br><em>お申し込み前アンケート</em></h1>
+    <p class="lead" id="lead">あなたの状況に合わせたロードマップをご用意するため、7つの質問にお答えください。回答をLINEで送っていただいたあと、日程のご案内をお送りします。</p>
+    <div class="meta" id="meta"><span>全7問</span><span>選ぶだけ</span><span>回答はLINEで送信</span></div>
+  </header>
+
+  <div class="progress" aria-hidden="true">
+    <div class="bar"><i id="barFill"></i></div>
+    <div class="count"><span id="answered">0</span> / <span id="total">7</span> 問回答</div>
+  </div>
+
+  <form id="quiz" novalidate>
+
+    <ol class="qs" id="survey"></ol>
+
+    <div class="submit">
+      <button type="submit" class="btn btn-main" id="submitBtn">回答を確定する</button>
+      <p class="hint" id="hint" aria-live="polite"></p>
+    </div>
+  </form>
+
+  <section class="done" id="done" hidden aria-live="polite">
+    <div class="head">
+      <span class="badge" id="doneBadge">ご回答ありがとうございます</span>
+      <h2 id="doneTitle">あと1ステップで<br>お申し込み完了です</h2>
+    </div>
+    <div class="result" id="resultText"></div>
+
+    <div class="gift">
+      <h3>LINEで回答を送信すると<br>お申し込みが完了します</h3>
+      <ul>
+        <li>日程調整のご連絡をお送りします</li>
+        <li>参加特典：SNS非公開の実売データ共有</li>
+        <li>参加特典：アカウント添削チケット</li>
+      </ul>
+      <a class="btn btn-line" id="lineBtn" href="#">LINEで回答を送信する<small>LINEが開いたら「送信」を押してください</small></a>
+      <p class="steps">① ボタンを押すとLINEが開きます<br>② 入力欄に回答が入った状態になります<br>③ <b>そのまま「送信」</b>を押すとお申し込み完了です</p>
+    </div>
+    <button type="button" class="retry" id="retry">回答をやり直す</button>
+  </section>
+
+  <footer>※ご回答いただいた内容は、作成会のご案内にのみ使用します</footer>
+</div>
+
+<script>
+/* ===== 設定 ===== */
+const LINE_ID = "@336zoiov";
+const KEYWORD = "ロードマップ申込"; // AiCmo自動応答（前方一致）のキーワード
+
+
+const SURVEY = [
+  {key:"性別", q:"性別", opts:["女性","男性"]},
+  {key:"年代", q:"ご年齢", opts:["20代","30代","40代","50代","60代以上"]},
+  {key:"職業", q:"ご職業", opts:["会社員","専業主婦","フリーター","公務員","個人事業主","経営者","無職"]},
+  {key:"物販経験", q:"物販の経験", opts:["まだない","不用品販売","仕入れの経験あり"]},
+  {key:"クレジットカード", q:"物販に使えるクレジットカード", note:"ご状況に応じて最適な方向性をご案内します", opts:["ある","ないが作れる","作れない"]},
+  {key:"目標月収", q:"物販で稼ぎたい額", opts:["月5万くらい","月10万","月10〜20万","月30万〜","月50万〜"]},
+  {key:"目標期限", q:"目標達成の期限", opts:["1か月後","3か月以内","半年以内","1年以内","特にない"]}
+];
+
+/* ---- 描画 ---- */
+const form = document.getElementById("quiz");
+const svEl = document.getElementById("survey");
+SURVEY.forEach((s, i) => {
+  const n = i + 1, li = document.createElement("li");
+  li.className = "q"; li.id = "s" + n; li.dataset.name = "s" + n;
+  li.innerHTML = `<div class="qno">アンケート${n}</div><p class="qtext" id="st${n}">${s.q}</p>${s.note?`<p class="qnote">${s.note}</p>`:""}
+    <div class="opts${s.opts.length===2||s.opts.length===4?" wide":""}" role="radiogroup" aria-labelledby="st${n}">
+      ${s.opts.map((lab,k)=>`<input type="radio" name="s${n}" id="s${n}o${k}" value="${lab}"><label for="s${n}o${k}">${lab}</label>`).join("")}
+    </div>`;
+  svEl.appendChild(li);
+});
+
+const cards = () => [...form.querySelectorAll(".q")];
+document.getElementById("total").textContent = cards().length;
+
+const fill = document.getElementById("barFill"), answeredEl = document.getElementById("answered"), hint = document.getElementById("hint");
+const picked = name => form.querySelector(`input[name="${name}"]:checked`);
+function update(){
+  const all = cards(), c = all.filter(li => picked(li.dataset.name)).length;
+  fill.style.width = (c / all.length * 100) + "%";
+  answeredEl.textContent = c;
+  if (c === all.length) hint.textContent = "";
+}
+form.addEventListener("change", e => { const card = e.target.closest(".q"); if (card) card.classList.remove("missing"); update(); });
+
+function surveyText(){
+  return SURVEY.map((s,i)=>`${s.key}：${picked("s"+(i+1)).value}`).join("\n");
+}
+function lineUrl(text){
+  return "https://line.me/R/oaMessage/" + encodeURIComponent(LINE_ID) + "/?" + encodeURIComponent(text);
+}
+
+form.addEventListener("submit", e => {
+  e.preventDefault();
+  const missing = cards().filter(li => !picked(li.dataset.name));
+  cards().forEach(li => li.classList.remove("missing"));
+  if (missing.length){
+    missing.forEach(li => li.classList.add("missing"));
+    hint.textContent = `まだ回答していない質問が${missing.length}問あります`;
+    missing[0].scrollIntoView({behavior:"smooth",block:"start"});
+    return;
+  }
+  document.getElementById("lineBtn").href = lineUrl(KEYWORD + "\n\n【アンケート】\n" + surveyText());
+  form.hidden = true;
+  document.querySelector(".progress").hidden = true;
+  const done = document.getElementById("done");
+  done.hidden = false;
+  done.scrollIntoView({behavior:"smooth",block:"start"});
+});
+
+document.getElementById("retry").addEventListener("click", () => {
+  form.reset(); update();
+  document.getElementById("done").hidden = true;
+  form.hidden = false;
+  document.querySelector(".progress").hidden = false;
+  window.scrollTo({top:0,behavior:"smooth"});
+});
+update();
+</script>
+</body>
+</html>
