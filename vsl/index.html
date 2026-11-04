@@ -69,7 +69,8 @@ footer{text-align:center;font-size:11.5px;color:var(--muted);margin-top:28px}
         <li>SNS非公開の実売データ共有</li>
         <li>アカウント添削チケット</li>
       </ul>
-      <a class="btn" id="ctaBtn" href="#">作成会を予約する</a>
+      <a class="btn" id="ctaBtn" href="#">ロードマップ作成会を希望する</a>
+      <p class="note">ボタンを押すとLINEが開きます。そのまま「送信」を押してください</p>
     </section>
   </div>
 
@@ -84,7 +85,9 @@ footer{text-align:center;font-size:11.5px;color:var(--muted);margin-top:28px}
 <script>
 /* ===== 設定：公開前にここを差し替え ===== */
 const VIDEO = { type: "youtube", id: "LpLaNlVdKMc" }; // type: "youtube" / "vimeo" / "mp4"（mp4はidに動画URL）
-const BOOKING_URL = "https://example.com/booking";       // 個別相談予約LPのURL
+const LINE_ID = "@336zoiov";
+const ROADMAP_KEYWORD = "ロードマップ希望";                 // AiCmo自動応答のキーワード
+const BOOKING_URL = "https://line.me/R/oaMessage/" + encodeURIComponent(LINE_ID) + "/?" + encodeURIComponent(ROADMAP_KEYWORD);
 const LIMIT_HOURS = 72;                                   // 公開期間（初回表示から）
 const STORAGE_KEY = "same_vsl_first_view_v1";
 
