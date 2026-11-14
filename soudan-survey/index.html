@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<title>個別相談会 お申し込み前アンケート</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Kiwi+Maru:wght@500&family=Zen+Kaku+Gothic+New:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#fff6ef;--surface:#ffffff;--ink:#3d2b2b;--muted:#8a6f6a;--line:#f1ddd2;
+  --accent:#e0705f;--accent-soft:#fde8e2;--accent-deep:#c4553f;--gold:#f2b880;
+  --line-green:#06c755;--alert:#d64545;
+  --display:"Kiwi Maru","Hiragino Maru Gothic ProN",serif;
+  --body:"Zen Kaku Gothic New","Hiragino Sans","Noto Sans JP",sans-serif;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:15px;line-height:1.75;
+  padding:0 16px 56px;}
+.wrap{max-width:560px;margin:0 auto}
+header{text-align:center;padding:32px 4px 18px}
+.badge{display:inline-block;background:var(--accent);color:#fff;font-size:12px;font-weight:700;letter-spacing:.08em;
+  padding:3px 14px;border-radius:4px}
+h1{font-family:var(--display);font-weight:500;font-size:25px;line-height:1.45;margin:14px 0 10px;letter-spacing:.04em}
+h1 small{display:block;font-size:15px;color:var(--accent-deep);letter-spacing:.12em;margin-bottom:4px}
+.lead{color:var(--muted);font-size:14px;margin:0 auto;max-width:30em}
+.chips{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-top:14px}
+.chips span{font-size:12px;border:1px dashed var(--accent);color:var(--accent-deep);border-radius:4px;padding:2px 10px;background:#fff}
+.progress{position:sticky;top:0;z-index:5;background:var(--bg);padding:10px 0 8px}
+.bar{height:8px;background:var(--line);border-radius:2px;overflow:hidden}
+.bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--gold),var(--accent));transition:width .3s}
+.count{text-align:right;font-size:12px;color:var(--muted);margin-top:4px}
+ol{list-style:none;margin:0;padding:0}
+.q{background:var(--surface);border:1px solid var(--line);border-left:5px solid var(--accent);border-radius:6px;
+  padding:16px 16px 18px;margin:14px 0;transition:border-color .2s}
+.q.missing{border-color:var(--alert);border-left-color:var(--alert)}
+.qno{font-family:var(--display);font-size:13px;color:var(--accent-deep)}
+.qtext{font-weight:700;font-size:16px;margin:2px 0 4px}
+.note{font-size:12px;color:var(--muted);margin:0 0 6px}
+.opts{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:8px;margin-top:10px}
+.opts label{position:relative;cursor:pointer}
+.opts input{position:absolute;opacity:0;pointer-events:none}
+.opts span{display:block;text-align:center;padding:10px 6px;border:1.5px solid var(--line);border-radius:6px;
+  background:#fffaf7;font-size:14px;transition:all .15s;user-select:none}
+.opts input:checked + span{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:700}
+.opts input:focus-visible + span{outline:2px solid var(--accent-deep);outline-offset:2px}
+.submit{display:block;width:100%;margin-top:22px;padding:15px;border:0;border-radius:6px;background:var(--ink);color:#fff;
+  font-family:var(--display);font-size:17px;letter-spacing:.06em;cursor:pointer}
+.hint{color:var(--alert);text-align:center;font-size:13px;min-height:1.6em;margin-top:8px}
+.foot{text-align:center;font-size:12px;color:var(--muted);margin-top:18px}
+#done{background:var(--surface);border:1px solid var(--line);border-top:5px solid var(--accent);border-radius:6px;padding:24px 18px;text-align:center;margin-top:16px}
+#done h2{font-family:var(--display);font-weight:500;font-size:20px;margin:0 0 8px}
+#done p{font-size:14px;color:var(--muted);margin:0 0 16px}
+.line-btn{display:block;background:var(--line-green);color:#fff;text-decoration:none;font-weight:700;font-size:17px;padding:15px;border-radius:6px}
+.retry{background:none;border:0;color:var(--muted);text-decoration:underline;font-size:13px;margin-top:14px;cursor:pointer;font-family:inherit}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <span class="badge">約1分・タップで回答</span>
+    <h1><small>個別相談会</small>お申し込み前アンケート</h1>
+    <p class="lead">あなたに合ったお話をご用意するため、7つの質問にお答えください。回答をLINEで送っていただいたあと、担当者よりご案内をお送りします。</p>
+    <div class="chips"><span>全7問</span><span>選ぶだけ</span><span>回答はLINEで送信</span></div>
+  </header>
+
+  <div class="progress"><div class="bar"><i id="barFill"></i></div><div class="count"><span id="answered">0</span> / 7 問回答</div></div>
+
+  <form id="quiz" novalidate>
+    <ol id="survey"></ol>
+    <button type="submit" class="submit">回答を確定する</button>
+    <div class="hint" id="hint"></div>
+    <p class="foot">※ご回答内容は、個別相談会のご案内にのみ使用します</p>
+  </form>
+
+  <section id="done" hidden>
+    <h2>ご回答ありがとうございます✨</h2>
+    <p>下のボタンを押すとLINEが開きます。<br>そのまま<strong>送信</strong>してください。</p>
+    <a class="line-btn" id="lineBtn" href="#">LINEで回答を送る</a>
+    <button type="button" class="retry" id="retry">回答をやり直す</button>
+  </section>
+</div>
+
+<script>
+/* ===== 設定 ===== */
+const LINE_ID = "@274wwhoc";            // 【公式】🦈さめちゃん🦈
+const KEYWORD = "個別相談会アンケート";   // LINEに届くメッセージの先頭
+
+const SURVEY = [
+  {key:"性別", q:"性別", opts:["女性","男性"]},
+  {key:"年代", q:"ご年齢", opts:["20代","30代","40代","50代","60代以上"]},
+  {key:"職業", q:"ご職業", opts:["会社員","専業主婦","フリーター","公務員","個人事業主","経営者","無職"]},
+  {key:"物販経験", q:"物販の経験", opts:["まだない","不用品販売","仕入れの経験あり"]},
+  {key:"クレジットカード", q:"物販に使えるクレジットカード", note:"ご状況に応じて最適な方向性をご案内します", opts:["ある","ないが作れる","作れない"]},
+  {key:"目標月収", q:"物販で稼ぎたい額", opts:["月5万くらい","月10万","月10〜20万","月30万〜","月50万〜"]},
+  {key:"目標期限", q:"目標達成の期限", opts:["1か月後","3か月以内","半年以内","1年以内","特にない"]}
+];
+
+const form = document.getElementById("quiz");
+const list = document.getElementById("survey");
+const esc = t => String(t).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+SURVEY.forEach((s, i) => {
+  const n = i + 1, li = document.createElement("li");
+  li.className = "q"; li.dataset.name = "s" + n;
+  li.innerHTML = `<div class="qno">Q${n}</div><p class="qtext">${esc(s.q)}</p>` +
+    (s.note ? `<p class="note">${esc(s.note)}</p>` : "") +
+    `<div class="opts">` + s.opts.map(o => `<label><input type="radio" name="s${n}" value="${esc(o)}"><span>${esc(o)}</span></label>`).join("") + `</div>`;
+  list.appendChild(li);
+});
+
+const cards = () => [...list.querySelectorAll(".q")];
+const fill = document.getElementById("barFill"), answeredEl = document.getElementById("answered"), hint = document.getElementById("hint");
+const picked = name => form.querySelector(`input[name="${name}"]:checked`);
+function update(){
+  const all = cards(), c = all.filter(li => picked(li.dataset.name)).length;
+  fill.style.width = (c / all.length * 100) + "%";
+  answeredEl.textContent = c;
+  if (c === all.length) hint.textContent = "";
+}
+form.addEventListener("change", e => { const card = e.target.closest(".q"); if (card) card.classList.remove("missing"); update(); });
+
+const surveyText = () => SURVEY.map((s,i) => `${s.key}：${picked("s"+(i+1)).value}`).join("\n");
+const lineUrl = text => "https://line.me/R/oaMessage/" + encodeURIComponent(LINE_ID) + "/?" + encodeURIComponent(text);
+
+form.addEventListener("submit", e => {
+  e.preventDefault();
+  const missing = cards().filter(li => !picked(li.dataset.name));
+  cards().forEach(li => li.classList.remove("missing"));
+  if (missing.length){
+    missing.forEach(li => li.classList.add("missing"));
+    hint.textContent = `まだ回答していない質問が${missing.length}問あります`;
+    missing[0].scrollIntoView({behavior:"smooth",block:"start"});
+    return;
+  }
+  document.getElementById("lineBtn").href = lineUrl(KEYWORD + "\n\n" + surveyText());
+  form.hidden = true;
+  document.querySelector(".progress").hidden = true;
+  const done = document.getElementById("done");
+  done.hidden = false;
+  done.scrollIntoView({behavior:"smooth",block:"start"});
+});
+
+document.getElementById("retry").addEventListener("click", () => {
+  form.reset(); update();
+  document.getElementById("done").hidden = true;
+  form.hidden = false;
+  document.querySelector(".progress").hidden = false;
+  window.scrollTo({top:0,behavior:"smooth"});
+});
+</script>
+</body>
+</html>
