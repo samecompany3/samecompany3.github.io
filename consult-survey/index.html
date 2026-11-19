@@ -102,6 +102,14 @@ ol{list-style:none}
 .opts input:checked + label::before{border:5px solid var(--navy)}
 .opts input:focus-visible + label{outline:3px solid rgba(25,195,214,.5);outline-offset:2px}
 
+.sel{position:relative;margin-top:12px}
+.sel::after{content:"";position:absolute;right:16px;top:50%;width:8px;height:8px;border-right:2px solid var(--navy);border-bottom:2px solid var(--navy);transform:translateY(-70%) rotate(45deg);pointer-events:none}
+.sel select{
+  width:100%;appearance:none;-webkit-appearance:none;font-family:inherit;font-size:16px;font-weight:700;color:var(--ink);
+  border:1.5px solid var(--line);border-radius:8px;padding:13px 40px 13px 14px;background:#fff;cursor:pointer;
+}
+.sel select:focus-visible{outline:3px solid rgba(25,195,214,.5);outline-offset:2px}
+.sel select.on{border-color:var(--navy);background:var(--aqua-soft);color:var(--navy)}
 .submit-wrap{margin-top:24px;text-align:center}
 .btn{
   display:inline-flex;align-items:center;justify-content:center;gap:8px;
@@ -139,9 +147,9 @@ ol{list-style:none}
     <span class="tag">🦈 個別相談会 参加者さま限定</span>
     <p class="eyebrow">PRE-CONSULTATION</p>
     <h1>個別相談会<span>参加前アンケート</span></h1>
-    <p class="lead">当日の相談会をあなたの状況に合わせた内容にするため、6つの質問にお答えください。回答をLINEで送っていただいたあと、日程のご案内をお送りします。</p>
+    <p class="lead">当日の相談会をあなたの状況に合わせた内容にするため、7つの質問にお答えください。回答をLINEで送っていただいたあと、日程のご案内をお送りします。</p>
     <div class="chips">
-      <span class="chip">全<b>6</b>問</span>
+      <span class="chip">全<b>7</b>問</span>
       <span class="chip">約<b>1</b>分・選ぶだけ</span>
       <span class="chip">回答はLINEで送信</span>
     </div>
@@ -150,7 +158,7 @@ ol{list-style:none}
 
 <main>
   <div class="progress">
-    <div class="progress-row"><span>回答状況</span><span><b id="answered">0</b> / <span id="total">6</span> 問</span></div>
+    <div class="progress-row"><span>回答状況</span><span><b id="answered">0</b> / <span id="total">7</span> 問</span></div>
     <div class="bar"><i id="barFill"></i></div>
   </div>
 
@@ -184,6 +192,7 @@ const KEYWORD = "【個別相談会アンケート】";
 const SURVEY = [
   {key:"性別", q:"性別", opts:["女性","男性"]},
   {key:"年齢", q:"ご年齢", opts:["20代","30代","40代","50代","60代以上"]},
+  {key:"都道府県", q:"お住まいの都道府県", type:"select", opts:["北海道","青森県","岩手県","宮城県","秋田県","山形県","福島県","茨城県","栃木県","群馬県","埼玉県","千葉県","東京都","神奈川県","新潟県","富山県","石川県","福井県","山梨県","長野県","岐阜県","静岡県","愛知県","三重県","滋賀県","京都府","大阪府","兵庫県","奈良県","和歌山県","鳥取県","島根県","岡山県","広島県","山口県","徳島県","香川県","愛媛県","高知県","福岡県","佐賀県","長崎県","熊本県","大分県","宮崎県","鹿児島県","沖縄県","海外"]},
   {key:"職業", q:"ご職業", opts:["会社員","専業主婦","フリーター","公務員","個人事業主","経営者","無職"]},
   {key:"クレジットカード", q:"物販に使えるクレジットカード", note:"ご状況に応じて最適な方向性をご案内します", opts:["ある","ないが作れる","作れない"]},
   {key:"目標金額", q:"物販で稼ぎたい額", opts:["月5万くらい","月10万","月10〜20万","月30万〜","月50万〜"]},
@@ -196,7 +205,12 @@ SURVEY.forEach((s, i) => {
   const n = i + 1, li = document.createElement("li");
   li.className = "q"; li.dataset.name = "s" + n;
   const wide = s.opts.length === 2 || s.opts.length === 4 || s.opts.length >= 6;
-  li.innerHTML = `<div class="qno">Q${String(n).padStart(2,"0")}</div><p class="qtext" id="st${n}">${s.q}</p>${s.note?`<p class="qnote">${s.note}</p>`:""}
+  const head = `<div class="qno">Q${String(n).padStart(2,"0")}</div><p class="qtext" id="st${n}">${s.q}</p>${s.note?`<p class="qnote">${s.note}</p>`:""}`;
+  if (s.type === "select") {
+    li.innerHTML = head + `<div class="sel"><select name="s${n}" aria-labelledby="st${n}"><option value="">選択してください</option>${s.opts.map(o=>`<option value="${o}">${o}</option>`).join("")}</select></div>`;
+    svEl.appendChild(li); return;
+  }
+  li.innerHTML = head + `
     <div class="opts${wide?" wide":""}" role="radiogroup" aria-labelledby="st${n}">
       ${s.opts.map((lab,k)=>`<input type="radio" name="s${n}" id="s${n}o${k}" value="${lab}"><label for="s${n}o${k}">${lab}</label>`).join("")}
     </div>`;
@@ -206,7 +220,7 @@ SURVEY.forEach((s, i) => {
 const cards = () => [...form.querySelectorAll(".q")];
 document.getElementById("total").textContent = cards().length;
 const fill = document.getElementById("barFill"), answeredEl = document.getElementById("answered"), hint = document.getElementById("hint");
-const picked = name => form.querySelector(`input[name="${name}"]:checked`);
+const picked = name => form.querySelector(`input[name="${name}"]:checked`) || [...form.querySelectorAll(`select[name="${name}"]`)].find(el => el.value);
 
 function update(){
   const all = cards(), c = all.filter(li => picked(li.dataset.name)).length;
@@ -214,7 +228,7 @@ function update(){
   answeredEl.textContent = c;
   if (c === all.length) hint.textContent = "";
 }
-form.addEventListener("change", e => { const card = e.target.closest(".q"); if (card) card.classList.remove("missing"); update(); });
+form.addEventListener("change", e => { if (e.target.tagName === "SELECT") e.target.classList.toggle("on", !!e.target.value); const card = e.target.closest(".q"); if (card) card.classList.remove("missing"); update(); });
 
 function surveyText(){
   return SURVEY.map((s,i)=>`■${s.key}：${picked("s"+(i+1)).value}`).join("\n");
@@ -242,7 +256,7 @@ form.addEventListener("submit", e => {
 });
 
 document.getElementById("retry").addEventListener("click", () => {
-  form.reset(); update();
+  form.reset(); form.querySelectorAll("select").forEach(el => el.classList.remove("on")); update();
   document.getElementById("done").hidden = true;
   form.hidden = false;
   document.querySelector(".progress").hidden = false;
