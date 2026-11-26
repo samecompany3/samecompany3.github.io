@@ -188,13 +188,14 @@ ol{list-style:none}
 <script>
 const LINE_ID = "@274wwhoc";
 const KEYWORD = "【個別相談会アンケート】";
+const KEYWORD_CHECK = "【個別相談会アンケート・ご状況確認】"; // カード「作れない」の方（自動返信を分けるため別見出し）
 
 const SURVEY = [
   {key:"性別", q:"性別", opts:["女性","男性"]},
   {key:"年齢", q:"ご年齢", opts:["20代","30代","40代","50代","60代以上"]},
   {key:"都道府県", q:"お住まいの都道府県", type:"select", opts:["北海道","青森県","岩手県","宮城県","秋田県","山形県","福島県","茨城県","栃木県","群馬県","埼玉県","千葉県","東京都","神奈川県","新潟県","富山県","石川県","福井県","山梨県","長野県","岐阜県","静岡県","愛知県","三重県","滋賀県","京都府","大阪府","兵庫県","奈良県","和歌山県","鳥取県","島根県","岡山県","広島県","山口県","徳島県","香川県","愛媛県","高知県","福岡県","佐賀県","長崎県","熊本県","大分県","宮崎県","鹿児島県","沖縄県","海外"]},
   {key:"職業", q:"ご職業", opts:["会社員","専業主婦","フリーター","公務員","個人事業主","経営者","無職"]},
-  {key:"クレジットカード", q:"物販に使えるクレジットカード", note:"ご状況に応じて最適な方向性をご案内します", opts:["ある","ないが作れる","作れない"]},
+  {key:"クレジットカード", q:"物販に使えるクレジットカード", note:"ご状況に応じて最適な方向性をご案内します", opts:["持っている","持っていないが作れる","作れない"]},
   {key:"目標金額", q:"物販で稼ぎたい額", opts:["月5万くらい","月10万","月10〜20万","月30万〜","月50万〜"]},
   {key:"期限", q:"目標達成の期限", opts:["1か月後","3か月以内","半年以内","1年以内","特にない"]}
 ];
@@ -247,7 +248,7 @@ form.addEventListener("submit", e => {
     missing[0].scrollIntoView({behavior:"smooth",block:"start"});
     return;
   }
-  document.getElementById("lineBtn").href = lineUrl(KEYWORD + "\n" + surveyText());
+  document.getElementById("lineBtn").href = lineUrl((picked("s5").value === "作れない" ? KEYWORD_CHECK : KEYWORD) + "\n" + surveyText());
   form.hidden = true;
   document.querySelector(".progress").hidden = true;
   const done = document.getElementById("done");
